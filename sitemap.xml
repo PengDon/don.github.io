@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://pengdon.github.io/2019/11/12/hello-world/</loc>
+    <loc>https://pengdon.github.io/2019/11/12/index/</loc>
     
-    <lastmod>2019-11-14T05:57:41.683Z</lastmod>
+    <lastmod>2019-11-14T09:59:55.831Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pengdon.github.io/categories/index.html</loc>
+    
+    <lastmod>2019-11-14T09:15:20.757Z</lastmod>
     
   </url>
   
