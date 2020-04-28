@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>vue-cli3.0版本 prerender 预渲染 | don</title>
+  <meta name="description" content="前提 node10^ 、 npm6^ 、vue-cli3  简写 -S --&amp;gt; --save  &#x2F;&#x2F; 生产阶段的依赖 -D --&amp;gt; --save-dev  &#x2F;&#x2F; 开发阶段的依赖  普通场景下的预渲染 1、利用手脚架新建个项目 12vue create vue3-prerendercd vue3-prerender 2、项目大致结构如下： 1234567891011121314vue3">
+<meta name="keywords" content="vue,prerender-spa-plugin,seo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-cli3.0版本 prerender 预渲染">
+<meta property="og:url" content="https:&#x2F;&#x2F;pengdon.github.io&#x2F;2019&#x2F;11&#x2F;14&#x2F;prerender&#x2F;index.html">
+<meta property="og:site_name" content="pengdon">
+<meta property="og:description" content="前提 node10^ 、 npm6^ 、vue-cli3  简写 -S --&amp;gt; --save  &#x2F;&#x2F; 生产阶段的依赖 -D --&amp;gt; --save-dev  &#x2F;&#x2F; 开发阶段的依赖  普通场景下的预渲染 1、利用手脚架新建个项目 12vue create vue3-prerendercd vue3-prerender 2、项目大致结构如下： 1234567891011121314vue3">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-28T03:04:36.261Z">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://pengdon.github.io/2019/11/14/prerender/index.html">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<link rel="alternate" href="/atom.xml" title="pengdon" type="application/atom+xml">
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/PengDon" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">don</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/PengDon" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Arithmetic/">Arithmetic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React-SSR/">React-SSR</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-SSR/">Vue-SSR</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prerender-spa-plugin/" rel="tag">prerender-spa-plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seo/" rel="tag">seo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a> <a href="/tags/nextjs/" style="font-size: 13px;">nextjs</a> <a href="/tags/prerender-spa-plugin/" style="font-size: 13px;">prerender-spa-plugin</a> <a href="/tags/seo/" style="font-size: 13px;">seo</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Arithmetic/">Arithmetic</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/27/index/" class="title">JavaScript算法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-27T01:23:56.950Z" itemprop="datePublished">2020-04-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Vue-SSR/">Vue-SSR</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/11/14/prerender/" class="title">vue-cli3.0版本 prerender 预渲染</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-11-14T12:11:27.000Z" itemprop="datePublished">2019-11-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Vue-SSR/">Vue-SSR</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/11/14/vueSsr1/" class="title">vue-ssr基本用法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-11-14T12:11:27.000Z" itemprop="datePublished">2019-11-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/React-SSR/">React-SSR</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/11/14/nextjs/" class="title">nextjs+typescript</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-11-14T12:11:27.000Z" itemprop="datePublished">2019-11-14</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-prerender" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue-cli3.0版本 prerender 预渲染
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/11/14/prerender/" class="article-date">
+	  <time datetime="2019-11-14T12:11:27.000Z" itemprop="datePublished">2019-11-14</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Vue-SSR/">Vue-SSR</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/prerender-spa-plugin/" rel="tag">prerender-spa-plugin</a>, <a class="article-tag-link" href="/tags/seo/" rel="tag">seo</a>, <a class="article-tag-link" href="/tags/vue/" rel="tag">vue</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/14/prerender/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.1k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="前提"><a class="markdownIt-Anchor" href="#前提"></a> 前提</h3>
+<p>node10^ 、 npm6^ 、vue-cli3</p>
+<h3 id="简写"><a class="markdownIt-Anchor" href="#简写"></a> 简写</h3>
+<p>-S --&gt; --save  // 生产阶段的依赖<br />
+-D --&gt; --save-dev  // 开发阶段的依赖</p>
+<h3 id="普通场景下的预渲染"><a class="markdownIt-Anchor" href="#普通场景下的预渲染"></a> 普通场景下的预渲染</h3>
+<p>1、利用手脚架新建个项目</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vue create vue3-prerender</span><br><span class="line"><span class="built_in">cd</span> vue3-prerender</span><br></pre></td></tr></table></figure>
+<p>2、项目大致结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vue3-prerender</span><br><span class="line">--node_modules</span><br><span class="line">--public</span><br><span class="line">--src</span><br><span class="line">--tests</span><br><span class="line">--.browserslistrc</span><br><span class="line">--.editorconfig</span><br><span class="line">--.eslintrc.js</span><br><span class="line">--.gitignore</span><br><span class="line">--babel.config.js</span><br><span class="line">--jest.config.js</span><br><span class="line">--package.json</span><br><span class="line">--package-lock.json</span><br><span class="line">--README.md</span><br></pre></td></tr></table></figure>
+<p>3、运行项目</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm run serve</span><br><span class="line"><span class="comment"># 可以看到有两个视图Home、About</span></span><br></pre></td></tr></table></figure>
+<p>4、预渲染插件安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置镜像下载可以加速下载</span></span><br><span class="line">npm config <span class="built_in">set</span> PUPPETEER_DOWNLOAD_HOST=https://npm.taobao.org/mirrors &amp;&amp; npm install prerender-spa-plugin -D</span><br></pre></td></tr></table></figure>
+<p>5、新建vue.config.js文件配置预渲染,文件内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通场景下的预渲染</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> PrerenderSPAPlugin = <span class="built_in">require</span>(<span class="string">'prerender-spa-plugin'</span>)</span><br><span class="line"><span class="keyword">const</span> Renderer = PrerenderSPAPlugin.PuppeteerRenderer</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  publicPath:<span class="string">'/'</span>,</span><br><span class="line">  configureWebpack:<span class="function"><span class="params">config</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 生产环境</span></span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</span><br><span class="line">      <span class="comment">// 预渲染配置</span></span><br><span class="line">      <span class="keyword">new</span> PrerenderSPAPlugin(&#123;</span><br><span class="line">        <span class="comment">// 默认输出是dist目录</span></span><br><span class="line">        staticDir: path.join(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">        <span class="comment">// 必需，要渲染的路线，根据自己定义的路由配置</span></span><br><span class="line">        routes: [<span class="string">'/'</span>, <span class="string">'/about'</span>],</span><br><span class="line">        <span class="comment">// 必须，要使用的实际渲染器，没有则不能预编译</span></span><br><span class="line">        renderer: <span class="keyword">new</span> Renderer(&#123;</span><br><span class="line">          inject: &#123;&#125;,</span><br><span class="line">          headless: <span class="literal">false</span>, <span class="comment">// 渲染时显示浏览器窗口。对调试很有用。</span></span><br><span class="line">          renderAfterDocumentEvent: <span class="string">'render-event'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、修改main.js文件,修改后内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    <span class="comment">// 这句非常重要，否则预渲染将不会启动</span></span><br><span class="line">    <span class="built_in">document</span>.dispatchEvent(<span class="keyword">new</span> Event(<span class="string">'render-event'</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
+<p>7、修改router目录下的index.js文件，修改内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'@/views/Home.vue'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'/'</span>,</span><br><span class="line">    name: <span class="string">'Home'</span>,</span><br><span class="line">    component: Home</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'/about'</span>,</span><br><span class="line">    name: <span class="string">'About'</span>,</span><br><span class="line">    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'../views/About.vue'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>, <span class="comment">// 预渲染一定要模式改成history</span></span><br><span class="line">  routes</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+<p>8、 执行构建打包命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p>9、 可以看到根目录多了个dist文件夹，目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-dist</span><br><span class="line">--about</span><br><span class="line">--static</span><br><span class="line">--favicon.ico</span><br><span class="line">--index.html</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在vue.config.js的预渲染插件路由数组里面配置了几个路由就会生成相应的静态文件</li>
+</ul>
+<h3 id="特殊场景下的预渲染"><a class="markdownIt-Anchor" href="#特殊场景下的预渲染"></a> 特殊场景下的预渲染</h3>
+<h4 id="场景描述"><a class="markdownIt-Anchor" href="#场景描述"></a> 场景描述</h4>
+<p>1、例如公司主域名是 <a href="http://www.abc.com" target="_blank" rel="noopener">www.abc.com</a>，现在开发的项目是挂载在主域名下的子目录，也就是通过https://www.abc.com/edu访问<br />
+2、由于目前路由是history模式，子目录的场景需要改路由的base属性、vue.config.js的publicPath属性，影响到预渲染的其他配置</p>
+<h4 id="具体操作针对普通场景配置做修改"><a class="markdownIt-Anchor" href="#具体操作针对普通场景配置做修改"></a> 具体操作针对普通场景配置做修改</h4>
+<p>1、修改router目录下的index.js文件，内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'@/views/Home.vue'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'/'</span>,</span><br><span class="line">    name: <span class="string">'Home'</span>,</span><br><span class="line">    component: Home</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'/about'</span>,</span><br><span class="line">    name: <span class="string">'About'</span>,</span><br><span class="line">    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'../views/About.vue'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>, <span class="comment">// 预渲染一定要模式改成history</span></span><br><span class="line">  base: <span class="string">'/edu/'</span>, <span class="comment">// 这个根据实际场景自己配置，但要与vue.config.js文件中的publicPath属性保持一致</span></span><br><span class="line">  routes</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+<p>2、修改vue.config.js文件，内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通场景下的预渲染</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> PrerenderSPAPlugin = <span class="built_in">require</span>(<span class="string">'prerender-spa-plugin'</span>)</span><br><span class="line"><span class="keyword">const</span> Renderer = PrerenderSPAPlugin.PuppeteerRenderer</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  publicPath: process.env.NODE_ENV === <span class="string">'production'</span>?<span class="string">'/edu/'</span>:<span class="string">'/'</span>,</span><br><span class="line">  outputDir: <span class="string">'dist/edu'</span>, </span><br><span class="line">  configureWebpack:<span class="function"><span class="params">config</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 生产环境</span></span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</span><br><span class="line">      <span class="comment">// 预渲染配置</span></span><br><span class="line">      <span class="keyword">new</span> PrerenderSPAPlugin(&#123;</span><br><span class="line">        staticDir: path.join(__dirname, <span class="string">'dist/'</span>),</span><br><span class="line">        outputDir: path.join(__dirname, <span class="string">'dist/edu'</span>),</span><br><span class="line">        indexPath: path.join(__dirname, <span class="string">'dist'</span>, <span class="string">'/edu/index.html'</span>),</span><br><span class="line">        <span class="comment">// 必需，要渲染的路线，根据自己定义的路由配置</span></span><br><span class="line">        routes: [<span class="string">'/'</span>, <span class="string">'/about'</span>],</span><br><span class="line">        <span class="comment">// 必须，要使用的实际渲染器，没有则不能预编译</span></span><br><span class="line">        renderer: <span class="keyword">new</span> Renderer(&#123;</span><br><span class="line">          inject: &#123;&#125;,</span><br><span class="line">          headless: <span class="literal">false</span>, <span class="comment">// 渲染时显示浏览器窗口。对调试很有用。</span></span><br><span class="line">          renderAfterDocumentEvent: <span class="string">'render-event'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、 执行构建打包命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p>4、 可以看到根目录多了个dist文件夹，目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-dist</span><br><span class="line">--edu</span><br><span class="line">---about</span><br><span class="line">---static</span><br><span class="line">---favicon.ico</span><br><span class="line">---index.html</span><br></pre></td></tr></table></figure>
+<h3 id="常见问题以及解决方案"><a class="markdownIt-Anchor" href="#常见问题以及解决方案"></a> 常见问题以及解决方案</h3>
+<h4 id="问题1项目打包发布到服务器上后刷新页面会出现404问题"><a class="markdownIt-Anchor" href="#问题1项目打包发布到服务器上后刷新页面会出现404问题"></a> 问题1：项目打包发布到服务器上后，刷新页面会出现404问题</h4>
+<blockquote>
+<p><strong>原因</strong> 路由是history模式导致的<br />
+<strong>解决方案</strong> 修改服务器相关nginx.conf配置</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">location ~* ^/edu &#123;</span><br><span class="line">  try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html; <span class="comment"># 解决vue路由history模式打包到生产，刷新页面出现404的问题</span></span><br><span class="line">  index index.html index.htm;</span><br><span class="line">  <span class="keyword">if</span> ( !-e <span class="variable">$request_filename</span> ) &#123;</span><br><span class="line">    rewrite ^(.*) /edu/index.html;</span><br><span class="line">    <span class="built_in">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="相关参考"><a class="markdownIt-Anchor" href="#相关参考"></a> 相关参考</h3>
+<p><a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">Vue</a><br />
+<a href="https://cli.vuejs.org/zh/guide/" target="_blank" rel="noopener">Vue CLI</a><br />
+<a href="https://webpack.js.org/concepts/" target="_blank" rel="noopener">Webpack4^</a><br />
+<a href="https://github.com/neutrinojs/webpack-chain" target="_blank" rel="noopener">webpack-chain</a><br />
+<a href="https://zhaoqize.github.io/puppeteer-api-zh_CN/#/" target="_blank" rel="noopener">puppeteer</a><br />
+<a href="https://github.com/chrisvfritz/prerender-spa-plugin" target="_blank" rel="noopener">prerender-spa-plugin</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://pengdon.github.io/2019/11/14/prerender/" title="vue-cli3.0版本 prerender 预渲染" target="_blank" rel="external">https://pengdon.github.io/2019/11/14/prerender/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/PengDon" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/PengDon" target="_blank"><span class="text-dark">don</span><small class="ml-1x">Web Developer</small></a></h3>
+        <div>拥抱未来，用技术改善生活。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+    
+      <div id="gitalkComments"></div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/04/27/index/" title="JavaScript算法"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/11/14/vueSsr1/" title="vue-ssr基本用法"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/PengDon" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '58b814b7330e819231fe',
+    clientSecret: 'fc0bfe0d2bab1f8f76f75d32aef724404ceb1413',
+    repo: 'pengdon.github.io',
+    owner: 'PengDon',
+    admin: ['PengDon'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('gitalkComments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
