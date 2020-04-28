@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>express基础 | don</title>
+  <meta name="description" content="Express 是什么？  官方概念：基于 Node.js 平台，快速、开放、极简的 Web 开发框架   优势  小巧灵活：Express 是一个保持最小规模的灵活的 Node.js Web 应用程序开发框架，为 Web 和移动应用程序提供一组强大的功能 易上手：express对web开发相关的模块进行了适度的封装，屏蔽了大量复杂繁琐的技术细节，让开发者只需要专注于业务逻辑的开发，极大的降低了">
+<meta name="keywords" content="Express,Node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="express基础">
+<meta property="og:url" content="https:&#x2F;&#x2F;pengdon.github.io&#x2F;2020&#x2F;04&#x2F;28&#x2F;express&#x2F;index.html">
+<meta property="og:site_name" content="pengdon">
+<meta property="og:description" content="Express 是什么？  官方概念：基于 Node.js 平台，快速、开放、极简的 Web 开发框架   优势  小巧灵活：Express 是一个保持最小规模的灵活的 Node.js Web 应用程序开发框架，为 Web 和移动应用程序提供一组强大的功能 易上手：express对web开发相关的模块进行了适度的封装，屏蔽了大量复杂繁琐的技术细节，让开发者只需要专注于业务逻辑的开发，极大的降低了">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-28T10:51:43.422Z">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://pengdon.github.io/2020/04/28/express/index.html">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<link rel="alternate" href="/atom.xml" title="pengdon" type="application/atom+xml">
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/PengDon" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">don</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/PengDon" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Arithmetic/">Arithmetic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React-SSR/">React-SSR</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-SSR/">Vue-SSR</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/" rel="tag">Express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Npm/" rel="tag">Npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prerender-spa-plugin/" rel="tag">prerender-spa-plugin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seo/" rel="tag">seo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Express/" style="font-size: 13px;">Express</a> <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a> <a href="/tags/Node/" style="font-size: 13.5px;">Node</a> <a href="/tags/Npm/" style="font-size: 13px;">Npm</a> <a href="/tags/nextjs/" style="font-size: 13px;">nextjs</a> <a href="/tags/prerender-spa-plugin/" style="font-size: 13.5px;">prerender-spa-plugin</a> <a href="/tags/seo/" style="font-size: 13.5px;">seo</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Node/">Node</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/28/express/" class="title">express基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-28T07:35:11.000Z" itemprop="datePublished">2020-04-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Node/">Node</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/28/node/" class="title">node开发环境配置</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-28T06:57:46.000Z" itemprop="datePublished">2020-04-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Vue/">Vue</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/28/prerender2/" class="title">vue-cli2.0版本 prerender 预渲染</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-28T03:26:07.000Z" itemprop="datePublished">2020-04-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Vue/">Vue</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/28/prerender/" class="title">vue-cli3.0版本 prerender 预渲染</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-28T03:01:27.000Z" itemprop="datePublished">2020-04-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Arithmetic/">Arithmetic</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/27/arithmetic/" class="title">JavaScript算法1</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-27T01:23:56.950Z" itemprop="datePublished">2020-04-27</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-express" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      express基础
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/04/28/express/" class="article-date">
+	  <time datetime="2020-04-28T07:35:11.000Z" itemprop="datePublished">2020-04-28</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Node/">Node</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Express/" rel="tag">Express</a>, <a class="article-tag-link" href="/tags/Node/" rel="tag">Node</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/28/express/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.3k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="express-是什么"><a class="markdownIt-Anchor" href="#express-是什么"></a> Express 是什么？</h2>
+<blockquote>
+<p>官方概念：基于 Node.js 平台，快速、开放、极简的 Web 开发框架</p>
+</blockquote>
+<h2 id="优势"><a class="markdownIt-Anchor" href="#优势"></a> 优势</h2>
+<ul>
+<li>小巧灵活：Express 是一个保持最小规模的灵活的 Node.js Web 应用程序开发框架，为 Web 和移动应用程序提供一组强大的功能</li>
+<li>易上手：express对web开发相关的模块进行了适度的封装，屏蔽了大量复杂繁琐的技术细节，让开发者只需要专注于业务逻辑的开发，极大的降低了入门和学习的成本</li>
+<li>高性能：express仅在web应用相关的nodejs模块上进行了适度的封装和扩展，较大程度避免了过度封装导致的性能损耗</li>
+<li>扩展性强：基于中间件的开发模式，使得express应用的扩展、模块拆分非常简单，既灵活，扩展性又强</li>
+</ul>
+<h2 id="怎么使用express"><a class="markdownIt-Anchor" href="#怎么使用express"></a> 怎么使用Express？</h2>
+<p>1、安装express</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express --save</span><br></pre></td></tr></table></figure>
+<p>2、代码最基本结构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、引入express模块</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="comment">// 2、创建 express 实例</span></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="comment">// 3、自定义路由， 响应HTTP的GET方法</span></span><br><span class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; res.send(<span class="string">'Hello World!'</span>))</span><br><span class="line"><span class="comment">// 4、监听3000端口请求</span></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; <span class="built_in">console</span>.log(<span class="string">`Example app listening on port <span class="subst">$&#123;port&#125;</span>!`</span>))</span><br></pre></td></tr></table></figure>
+<p>3、一个典型的使用express的app.js，主要做了以下几件事：</p>
+<ul>
+<li>引入express模块</li>
+<li>创建 express 实例</li>
+<li>使用app.set设置express内部的一些参数(options)</li>
+<li>使用app.use来注册函数</li>
+<li>通过http.createServer用app来处理请求</li>
+</ul>
+<h2 id="使用场景"><a class="markdownIt-Anchor" href="#使用场景"></a> 使用场景</h2>
+<p>1、作为资源服务器<br />
+2、开发web项目<br />
+3、作为中间件提供服务</p>
+<h2 id="配置设置"><a class="markdownIt-Anchor" href="#配置设置"></a> 配置设置</h2>
+<ul>
+<li>express可以使用 set(setting,value)、 enable(setting)、disable(setting)方法来配置</li>
+<li>下面是可以配置的变量：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>env</td>
+<td>定义环境模式字符串，如development,testing,production</td>
+<td>process.env.NODE_ENV</td>
+</tr>
+<tr>
+<td>trust proxy</td>
+<td>启用/禁用反向代理的支持</td>
+<td>false</td>
+</tr>
+<tr>
+<td>jsonp callback name</td>
+<td>定义JSONP请求的默认回调名称</td>
+<td>?callback=</td>
+</tr>
+<tr>
+<td>json replacer</td>
+<td>定义JSON replacer回调函数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>json spaces</td>
+<td>指定当格式化JSON响应时使用的空格数量</td>
+<td>开发中为2，在生产为0</td>
+</tr>
+<tr>
+<td>case sensitive routing</td>
+<td>启用/禁用区分大小写，如/home与/Home是不一样的</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td>strict routing</td>
+<td>启用/禁用严格的路由，如/home和/home/是不一样的</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td>view cache</td>
+<td>启用/禁用视图模板编译缓存</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>view engine</td>
+<td>指定呈现模板时，如果从视图中省略了文件扩展名，应该使用的默认模板引擎扩展</td>
+<td></td>
+</tr>
+<tr>
+<td>views</td>
+<td>指定模板引擎用来查找视图模板的路径</td>
+<td>./views</td>
+</tr>
+</tbody>
+</table>
+<h2 id="配置路由"><a class="markdownIt-Anchor" href="#配置路由"></a> 配置路由</h2>
+<ul>
+<li>语法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.get(path,[middleware],callback)</span><br><span class="line">app.post(path,[middleware],callback)</span><br><span class="line"><span class="comment">// middleware是回调函数执行前要应用的中间件函数</span></span><br><span class="line"><span class="comment">// callback是应该处理该请求并把响应发回给客户端的请求处理程序</span></span><br><span class="line"><span class="comment">// callback以Request对象作为第一个参数，以Response对象作为第二个参数</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>全路径匹配</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全部路径的全局处理程序</span></span><br><span class="line">app.all(<span class="string">'*'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">   </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>无参数场景</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 发送各种类型的响应</span></span><br><span class="line">    res.send(<span class="string">"get"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">app.post(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 发送各种类型的响应</span></span><br><span class="line">    res.send(<span class="string">"post"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>有参数场景</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/getUserInfo'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> params = req.query; <span class="comment">// get传递过来的参数</span></span><br><span class="line">  res.send(<span class="string">"get params"</span>+params.id);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// eg: get 请求 /getUserInfo?id=u123</span></span><br><span class="line"><span class="comment">// params.id -&gt; u123</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>正则匹配参数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="regexp">/^\/money\/(\w+)\:(\w+)?$/</span><span class="function">.<span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">	res.send(<span class="string">'get money '</span> + req.params[<span class="number">0</span>] + req.params[<span class="number">1</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// eg: get 请求  /money/10:66</span></span><br><span class="line"><span class="comment">// req.params[0]-&gt;10  req.params[1]-&gt;66</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>已定义的参数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/user/:userid'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">	res.send(<span class="string">"Get User: "</span> + req.param(<span class="string">"userid"</span>));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// eg: get 请求  /user/u123</span></span><br><span class="line"><span class="comment">// req.param("userid") -&gt; u123</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>已定义的参数应用回调函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里的next是一个用于已注册的下一个app.param()回调的回调函数，必须要在回调函数中的某处调用next()，否则回调链会被破坏。value是从URL路径解析的参数的值。</span></span><br><span class="line">app.param(param,<span class="function"><span class="keyword">function</span>(<span class="params">req,res,next,value</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="request对象"><a class="markdownIt-Anchor" href="#request对象"></a> Request对象</h2>
+<h3 id="属性"><a class="markdownIt-Anchor" href="#属性"></a> 属性</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>originalUrl</td>
+<td>请求的原始URL字符串</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>协议的字符串，如http或https</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>请求的ip地址</td>
+</tr>
+<tr>
+<td>path</td>
+<td>请求的路径部分</td>
+</tr>
+<tr>
+<td>host</td>
+<td>请求的主机名</td>
+</tr>
+<tr>
+<td>method</td>
+<td>HTTP方法</td>
+</tr>
+<tr>
+<td>query</td>
+<td>请求的URL的查询字符串部分</td>
+</tr>
+<tr>
+<td>fresh</td>
+<td>一个布尔值，当最后修改与当前匹配时为true</td>
+</tr>
+<tr>
+<td>stale</td>
+<td>一个布尔值，当最后修改与当前匹配时为false</td>
+</tr>
+<tr>
+<td>secure</td>
+<td>一个布尔值，当建立TLS连接时为true</td>
+</tr>
+<tr>
+<td>acceptsCharset(charset)</td>
+<td>一个方法，如果由charset指定的字符集受支持，返回true</td>
+</tr>
+<tr>
+<td>get(header)</td>
+<td>返回header的值的方法</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>请求标头的对象形式</td>
+</tr>
+</tbody>
+</table>
+<h2 id="response对象"><a class="markdownIt-Anchor" href="#response对象"></a> Response对象</h2>
+<h3 id="设置标头"><a class="markdownIt-Anchor" href="#设置标头"></a> 设置标头</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get(header)</td>
+<td>返回指定的header参数的值</td>
+</tr>
+<tr>
+<td>set(header,value)</td>
+<td>设置header参数的值</td>
+</tr>
+<tr>
+<td>set(headerObj)</td>
+<td>接受一个对象，包括多个’header’:'value’属性</td>
+</tr>
+<tr>
+<td>locatio(path)</td>
+<td>把location标头设置为指定的path参数</td>
+</tr>
+<tr>
+<td>type(type_string)</td>
+<td>根据type_string参数设置Content-Type标头</td>
+</tr>
+<tr>
+<td>attachment([filepath])</td>
+<td>把Content-Disposition标头设置为attachment，并且如果指定filepath，则Content-Type头是基于文件扩展名设置的</td>
+</tr>
+</tbody>
+</table>
+<h3 id="设置状态"><a class="markdownIt-Anchor" href="#设置状态"></a> 设置状态</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Rediction重定向</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request错误的请求</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized未经许可</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden禁止</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server Error服务器错误</td>
+</tr>
+</tbody>
+</table>
+<h3 id="发送响应"><a class="markdownIt-Anchor" href="#发送响应"></a> 发送响应</h3>
+<p>res.send(status,[body])<br />
+body是一个String或者Buffer对象，如果指定Buffer对象，内容类型就被自动设置为application/octet-stream(应用程序/八位字节流)</p>
+<h3 id="发送json响应"><a class="markdownIt-Anchor" href="#发送json响应"></a> 发送JSON响应</h3>
+<p>res.json(status,[object])</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/json'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    app.set(<span class="string">'json spaces'</span>,<span class="number">4</span>);</span><br><span class="line">    res.json(&#123;<span class="attr">name</span>:<span class="string">'bob'</span>,<span class="attr">built</span>:<span class="string">'1223'</span>,<span class="attr">centers</span>:[<span class="string">'art'</span>,<span class="string">'maths'</span>]&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// jsonp callback name被设置为cb,意味着客户端需要在URL中传递的不是?callback=&lt;function&gt;，而是?cb=&lt;function&gt;</span></span><br><span class="line">app.get(<span class="string">'jsonp'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">res,req</span>)</span>&#123;</span><br><span class="line">    app.set(<span class="string">'jsonp callback name'</span>,<span class="string">'cb'</span>);</span><br><span class="line">    res.jsonp(&#123;<span class="attr">name</span>:<span class="string">'bob'</span>,<span class="attr">built</span>:<span class="string">'1223'</span>,<span class="attr">centers</span>:[<span class="string">'art'</span>,<span class="string">'maths'</span>]&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="发送文件"><a class="markdownIt-Anchor" href="#发送文件"></a> 发送文件</h3>
+<p>res.sendFile(path,[options],[callback])</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// path指向你要发送给客户端的文件，options参数是一个对象，</span></span><br><span class="line"><span class="comment">// 包含了一个maxAge属性定义的最长期限和root属性(用来支持path参数相对路径的根路径)</span></span><br><span class="line"><span class="comment">// 当文件传输完成时，回调函数被调用，并接受一个错误作为唯一的参数</span></span><br><span class="line">app.get(<span class="string">'/image'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    res.sendFile(<span class="string">'arch.jpg'</span>,&#123;<span class="attr">maxAge</span>:<span class="number">1</span>,<span class="attr">root</span>:<span class="string">'./views'</span>&#125;,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(err)&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'Error'</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'Success'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="发送下载响应"><a class="markdownIt-Anchor" href="#发送下载响应"></a> 发送下载响应</h3>
+<p>res.download(path,[filename],[callback])</p>
+<h3 id="重定向响应"><a class="markdownIt-Anchor" href="#重定向响应"></a> 重定向响应</h3>
+<p>res.redirect(path);</p>
+<h2 id="中间件"><a class="markdownIt-Anchor" href="#中间件"></a> 中间件</h2>
+<ol>
+<li>Express提供的大部分功能是通过中间件函数完成的，这些中间件函数在nodejs收到请求的时点和发送响应的时点之间执行。Express的connect模块提供了中间件框架，让你方便的在全局或路径级别或为单个路由插入中间件功能。通过Express支持的中间件可以让你快速提供静态文件，实现cookie，支持会话，处理post数据等等，你甚至可以创建自己的自定义中间件函数，并利用它们来预处理请求和提供自己的功能。</li>
+<li>有哪些中间件</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static</td>
+<td>允许Express服务器以流式处理静态文件的GET请求，这个中间件是Express内置的，它可以通过express.static()访问</td>
+</tr>
+<tr>
+<td>express-logger</td>
+<td>实现一个格式化的请求记录器来在跟踪对服务器的请求</td>
+</tr>
+<tr>
+<td>basic-auth-connect</td>
+<td>提供对基本的HTTP身份验证的支持</td>
+</tr>
+<tr>
+<td>cookie-parser</td>
+<td>可以从请求读取cookie并在响应中设置cookie</td>
+</tr>
+<tr>
+<td>cookie-session</td>
+<td>提供基于cookie的会话支持</td>
+</tr>
+<tr>
+<td>express-session</td>
+<td>提供了一个强大的会话支持</td>
+</tr>
+<tr>
+<td>body-parser</td>
+<td>把POST请求正文中的JSON数据解析为req.body属性</td>
+</tr>
+<tr>
+<td>compression</td>
+<td>对发给客户端的大响应提供Gzip压缩支持</td>
+</tr>
+<tr>
+<td>caurf</td>
+<td>提供跨站点请求伪造保护</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>安装中间件</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install 中间名称 --save</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>分配中间件<br />
+1&gt; 在全局范围内把中间件分配给某个路径</li>
+</ol>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 要对所有路由指定中间件，可以在Express app对象上实现Use()方法：</span></span><br><span class="line"><span class="comment">// use([path],middleware)</span></span><br><span class="line"><span class="comment">// 其中，path是可选的，默认为/，意味着所有的路径，middleware是一个函数，</span></span><br><span class="line"><span class="comment">// 即function(req,res,next)&#123;&#125;，每个中间件函数都有一个构造函数，它返回相应的中间件功能。</span></span><br><span class="line"><span class="comment">// next是要执行的下一个中间件函数。</span></span><br><span class="line"><span class="comment">// 例如，把body-parser中间件应用于所有路径：</span></span><br><span class="line"><span class="keyword">var</span> express=<span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> bodyParser=<span class="built_in">require</span>(<span class="string">'body-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> app=express();</span><br><span class="line">app.use(<span class="string">'/'</span>,bodyParser());</span><br></pre></td></tr></table></figure>
+<p>2&gt; 把中间件分配到单个路由</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express=<span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> bodyParser=<span class="built_in">require</span>(<span class="string">'body-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> app=express();</span><br><span class="line">app.get(<span class="string">'/parseRoute'</span>,bodyParser(),<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// coding</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>3&gt; 添加多个中间件函数</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以根据需要在全局范围和路由上分配任意多的中间件函数</span></span><br><span class="line"><span class="keyword">var</span> express=<span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> bodyParser=<span class="built_in">require</span>(<span class="string">'body-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser=<span class="built_in">require</span>)(<span class="string">'cookie-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> session=<span class="built_in">require</span>(<span class="string">'express-session'</span>);</span><br><span class="line"><span class="keyword">var</span> app=express();</span><br><span class="line"><span class="comment">// 注意，你分配函数的顺序就是它们在请求中被应用的顺序。一些中间件需要被添加在别的中间件函数前面。</span></span><br><span class="line">app.use(<span class="string">'/'</span>,bodyParser()).use(<span class="string">'/'</span>,cookieParser()).use(<span class="string">'/'</span>,session());</span><br></pre></td></tr></table></figure>
+<h2 id="常见问题"><a class="markdownIt-Anchor" href="#常见问题"></a> 常见问题</h2>
+<p><strong>如何处理 404 响应？</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.status(<span class="number">404</span>).send(<span class="string">"Sorry can't find that!"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>如何设置一个错误处理器？</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">err, req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.error(err.stack)</span><br><span class="line">  res.status(<span class="number">500</span>).send(<span class="string">'Something broke!'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>如何渲染纯 HTML 文件？</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以通过 res.sendFile() 直接对外输出 HTML 文件</span></span><br><span class="line">res.readFile(<span class="string">'index.html'</span>)</span><br><span class="line"><span class="comment">// 如果你需要对外提供的资源文件很多，可以使用 express.static() 中间件</span></span><br><span class="line">app.use(express.static(<span class="string">'htmls'</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2>
+<p><a href="https://www.expressjs.com.cn/" target="_blank" rel="noopener">Express</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://pengdon.github.io/2020/04/28/express/" title="express基础" target="_blank" rel="external">https://pengdon.github.io/2020/04/28/express/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/PengDon" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/PengDon" target="_blank"><span class="text-dark">don</span><small class="ml-1x">Web Developer</small></a></h3>
+        <div>拥抱未来，用技术改善生活。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+    
+      <div id="gitalkComments"></div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/04/28/node/" title="node开发环境配置"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/PengDon" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '58b814b7330e819231fe',
+    clientSecret: 'fc0bfe0d2bab1f8f76f75d32aef724404ceb1413',
+    repo: 'pengdon.github.io',
+    owner: 'PengDon',
+    admin: ['PengDon'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('gitalkComments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
