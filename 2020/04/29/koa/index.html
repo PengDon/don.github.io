@@ -17,19 +17,19 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>nextjs+typescript | don</title>
-  <meta name="description" content="基础  1. 先创建一个最基础的Nextjs项目 12345mkdir next-tscd next-tsnpm init -ynpm install --save react react-dom nextmkdir pages  2. 添加Typescipt和@types相关依赖 1npm install --save-dev typescript @types&#x2F;react @types&#x2F;no">
-<meta name="keywords" content="nextjs">
+  <title>koa基础 | don</title>
+  <meta name="description" content="前提 node10^  简介 Koa 是一个新的 web 框架，由 Express 幕后的原班人马打造， 致力于成为 web 应用和 API 开发领域中的一个更小、更富有表现力、更健壮的基石。 通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理。 Koa 并没有捆绑任何中间件， 而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。  安装 1npm i koa">
+<meta name="keywords" content="Koa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nextjs+typescript">
-<meta property="og:url" content="https:&#x2F;&#x2F;pengdon.github.io&#x2F;2019&#x2F;11&#x2F;14&#x2F;nextjs&#x2F;index.html">
+<meta property="og:title" content="koa基础">
+<meta property="og:url" content="https:&#x2F;&#x2F;pengdon.github.io&#x2F;2020&#x2F;04&#x2F;29&#x2F;koa&#x2F;index.html">
 <meta property="og:site_name" content="pengdon">
-<meta property="og:description" content="基础  1. 先创建一个最基础的Nextjs项目 12345mkdir next-tscd next-tsnpm init -ynpm install --save react react-dom nextmkdir pages  2. 添加Typescipt和@types相关依赖 1npm install --save-dev typescript @types&#x2F;react @types&#x2F;no">
+<meta property="og:description" content="前提 node10^  简介 Koa 是一个新的 web 框架，由 Express 幕后的原班人马打造， 致力于成为 web 应用和 API 开发领域中的一个更小、更富有表现力、更健壮的基石。 通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理。 Koa 并没有捆绑任何中间件， 而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。  安装 1npm i koa">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-28T01:41:32.897Z">
+<meta property="og:updated_time" content="2020-04-29T03:46:44.815Z">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://pengdon.github.io/2019/11/14/nextjs/index.html">
+  <link rel="canonical" href="https://pengdon.github.io/2020/04/29/koa/index.html">
   
   
     <link rel="icon" href="/favicon.png" type="image/x-icon">
@@ -316,14 +316,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-nextjs" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-koa" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      nextjs+typescript
+      koa基础
     </h1>
   
 
@@ -331,20 +331,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/11/14/nextjs/" class="article-date">
-	  <time datetime="2019-11-14T12:11:27.000Z" itemprop="datePublished">2019-11-14</time>
+	<a href="/2020/04/29/koa/" class="article-date">
+	  <time datetime="2020-04-29T03:11:59.000Z" itemprop="datePublished">2020-04-29</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/React-SSR/">React-SSR</a>
+    <a class="article-category-link" href="/categories/Node/">Node</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/nextjs/" rel="tag">nextjs</a>
+	<a class="article-tag-link" href="/tags/Koa/" rel="tag">Koa</a>
   </span>
 
 
@@ -356,30 +356,57 @@
 		</span>
 	</span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/14/nextjs/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/29/koa/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 120(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 722(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="基础"><a class="markdownIt-Anchor" href="#基础"></a> 基础</h3>
-<h4 id="1-先创建一个最基础的nextjs项目"><a class="markdownIt-Anchor" href="#1-先创建一个最基础的nextjs项目"></a> 1. 先创建一个最基础的Nextjs项目</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir next-ts</span><br><span class="line"><span class="built_in">cd</span> next-ts</span><br><span class="line">npm init -y</span><br><span class="line">npm install --save react react-dom next</span><br><span class="line">mkdir pages</span><br></pre></td></tr></table></figure>
-<h4 id="2-添加typescipt和types相关依赖"><a class="markdownIt-Anchor" href="#2-添加typescipt和types相关依赖"></a> 2. 添加Typescipt和@types相关依赖</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev typescript @types/react @types/node</span><br></pre></td></tr></table></figure>
-<h4 id="3-修改next-ts目录下packagejson文件中scripts属性的内容"><a class="markdownIt-Anchor" href="#3-修改next-ts目录下packagejson文件中scripts属性的内容"></a> 3. 修改next-ts目录下package.json文件中scripts属性的内容</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"next"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"next build"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"next start"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="4-在pages目录下创建indextsx文件文件内容如下"><a class="markdownIt-Anchor" href="#4-在pages目录下创建indextsx文件文件内容如下"></a> 4. 在pages目录下创建index.tsx文件，文件内容如下：</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const Home = () =&gt; &lt;h1&gt;Nextjs typescript!&lt;/h1&gt;;</span><br><span class="line"><span class="built_in">export</span> default Home;</span><br></pre></td></tr></table></figure>
-<h4 id="5-启动dev-server查看效果"><a class="markdownIt-Anchor" href="#5-启动dev-server查看效果"></a> 5. 启动dev server查看效果</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+        <h2 id="前提"><a class="markdownIt-Anchor" href="#前提"></a> 前提</h2>
+<p>node10^</p>
+<h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
+<p>Koa 是一个新的 web 框架，由 Express 幕后的原班人马打造， 致力于成为 web 应用和 API 开发领域中的一个更小、更富有表现力、更健壮的基石。 通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理。 Koa 并没有捆绑任何中间件， 而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。</p>
+<h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i koa</span><br></pre></td></tr></table></figure>
+<h2 id="最基本结构"><a class="markdownIt-Anchor" href="#最基本结构"></a> 最基本结构</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、引入koa模块依赖</span></span><br><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="comment">// 2、实例化koa对象</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"><span class="comment">// 3、监听3000端口，端口可以自定义</span></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="设置"><a class="markdownIt-Anchor" href="#设置"></a> 设置</h2>
+<ul>
+<li>app.env 默认是 NODE_ENV 或 “development”</li>
+<li>app.keys 签名的 cookie 密钥数组</li>
+<li>app.proxy 当真正的代理头字段将被信任时</li>
+<li>忽略 .subdomains 的 app.subdomainOffset 偏移量，默认为 2</li>
+<li>app.proxyIpHeader 代理 ip 消息头, 默认为 X-Forwarded-For</li>
+<li>app.maxIpsCount 从代理 ip 消息头读取的最大 ips, 默认为 0 (代表无限)</li>
+</ul>
+<h2 id="常用代码片段"><a class="markdownIt-Anchor" href="#常用代码片段"></a> 常用代码片段</h2>
+<p>1、返回其他类型的内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明一个main中间件</span></span><br><span class="line"><span class="keyword">const</span> main = <span class="function">(<span class="params"><span class="keyword">async</span> ctx</span>) =&gt;</span>&#123;</span><br><span class="line"><span class="keyword">if</span> (ctx.accepts(<span class="string">'json'</span>)) &#123;</span><br><span class="line">    ctx.type = <span class="string">'json'</span>;</span><br><span class="line">    ctx.body = &#123; <span class="attr">data</span>: <span class="string">'json'</span> &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ctx.accepts(<span class="string">'html'</span>)) &#123;</span><br><span class="line">    ctx.type = <span class="string">'html'</span>;</span><br><span class="line">    ctx.body = <span class="string">'&lt;p&gt;html&lt;/p&gt;'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ctx.accepts(<span class="string">'xml'</span>)) &#123;</span><br><span class="line">    ctx.type = <span class="string">'xml'</span>;</span><br><span class="line">    ctx.body = <span class="string">'&lt;data&gt;xml&lt;/data&gt;'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">// 默认返回纯文本</span></span><br><span class="line">    ctx.type = <span class="string">'text'</span>;</span><br><span class="line">    ctx.body = <span class="string">'text'</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;; </span><br><span class="line"><span class="comment">// 直接运行页面中会显示json格式，因为我们没有设置请求头，所以每一种格式都是ok的   </span></span><br><span class="line"><span class="comment">// app.use()用来加载中间件</span></span><br><span class="line">app.use(main)</span><br></pre></td></tr></table></figure>
+<p>2、网页模板</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> main =<span class="keyword">async</span> ctx =&gt; &#123;</span><br><span class="line">    ctx.type = <span class="string">'html'</span>;</span><br><span class="line">    ctx.body = fs.createReadStream(<span class="string">'./data/index.html'</span>);</span><br><span class="line">&#125;;</span><br><span class="line">app.use(main);</span><br></pre></td></tr></table></figure>
+<p>3、原生路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="keyword">async</span> ctx =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (ctx.request.url == <span class="string">'/'</span>) &#123;<span class="comment">//通过ctx.request.url获取用户请求路径</span></span><br><span class="line">        ctx.body = <span class="string">'&lt;h1&gt;首页&lt;/h1&gt;'</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ctx.request.url == <span class="string">'/my'</span>) &#123;</span><br><span class="line">        ctx.body = <span class="string">'&lt;h1&gt;联系我们&lt;/h1&gt;'</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ctx.body = <span class="string">'&lt;h1&gt;404 not found&lt;/h1&gt;'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>4、koa-router 模块路由</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 路由安装</span></span><br><span class="line">npm install koa-router</span><br></pre></td></tr></table></figure>
+<p>代码片段</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use(router.routes()).use(router.allowedMethods());</span><br><span class="line"><span class="comment">// routes()返回路由器中间件，它调度与请求匹配的路由。</span></span><br><span class="line"><span class="comment">// allowedMethods()处理的业务是当所有路由中间件执行完成之后,若ctx.status为空或者404的时候,丰富response对象的header头.</span></span><br><span class="line">router.get(<span class="string">'/'</span>,<span class="keyword">async</span> ctx=&gt;&#123;</span><br><span class="line">  ctx.body = <span class="string">'&lt;h1&gt;首页&lt;/h1&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">router.get(<span class="string">'/my'</span>,<span class="keyword">async</span> ctx=&gt;&#123;</span><br><span class="line">  ctx.body = <span class="string">'&lt;h1&gt;个人中心&lt;/h1&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>5、静态资源(图片、字体、样式表、脚本…)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 路由安装</span></span><br><span class="line">npm install koa-staic</span><br></pre></td></tr></table></figure>
+<p>代码片段</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> serve = <span class="built_in">require</span>(<span class="string">'koa-static'</span>);</span><br><span class="line"><span class="keyword">const</span> main = serve(path.join(__dirname));</span><br><span class="line">app.use(main);</span><br></pre></td></tr></table></figure>
+<p>6、重定向跳转</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>);</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();</span><br><span class="line"></span><br><span class="line">app.use(router.routes()).use(router.allowedMethods());</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/commit'</span>,<span class="keyword">async</span> ctx=&gt;&#123;</span><br><span class="line">  <span class="comment">// 重定向</span></span><br><span class="line">  ctx.redirect(<span class="string">'/login'</span>);</span><br><span class="line">&#125;)</span><br><span class="line">router.get(<span class="string">'/'</span>,<span class="keyword">async</span> ctx=&gt;&#123;</span><br><span class="line">   ctx.body = <span class="string">'主页'</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2>
+<ul>
+<li><a href="https://koa.bootcss.com/" target="_blank" rel="noopener">koa</a></li>
+</ul>
 
       
     </div>
@@ -389,7 +416,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://pengdon.github.io/2019/11/14/nextjs/" title="nextjs+typescript" target="_blank" rel="external">https://pengdon.github.io/2019/11/14/nextjs/</a>
+      <a href="https://pengdon.github.io/2020/04/29/koa/" title="koa基础" target="_blank" rel="external">https://pengdon.github.io/2020/04/29/koa/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -435,13 +462,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2020/04/27/arithmetic/" title="JavaScript算法1"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/11/14/vueSsr1/" title="vue-ssr基本用法"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/04/29/hexo/" title="hexo 基础"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

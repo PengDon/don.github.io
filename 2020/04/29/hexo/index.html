@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>hexo 基础 | don</title>
+  <meta name="description" content="前提  Node10^ git   什么是 Hexo？ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  安装 Hexo 1npm install -g hexo-cli  建站 1、 执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件 123hexo init &amp;lt;folder&amp;gt">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo 基础">
+<meta property="og:url" content="https:&#x2F;&#x2F;pengdon.github.io&#x2F;2020&#x2F;04&#x2F;29&#x2F;hexo&#x2F;index.html">
+<meta property="og:site_name" content="pengdon">
+<meta property="og:description" content="前提  Node10^ git   什么是 Hexo？ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  安装 Hexo 1npm install -g hexo-cli  建站 1、 执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件 123hexo init &amp;lt;folder&amp;gt">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-29T02:49:03.717Z">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://pengdon.github.io/2020/04/29/hexo/index.html">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<link rel="alternate" href="/atom.xml" title="pengdon" type="application/atom+xml">
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/PengDon" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">don</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/PengDon" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Arithmetic/">Arithmetic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React-SSR/">React-SSR</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-SSR/">Vue-SSR</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/" rel="tag">Express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Koa/" rel="tag">Koa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Npm/" rel="tag">Npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prerender-spa-plugin/" rel="tag">prerender-spa-plugin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seo/" rel="tag">seo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Express/" style="font-size: 13px;">Express</a> <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a> <a href="/tags/Koa/" style="font-size: 13px;">Koa</a> <a href="/tags/Node/" style="font-size: 13px;">Node</a> <a href="/tags/Npm/" style="font-size: 13px;">Npm</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/nextjs/" style="font-size: 13px;">nextjs</a> <a href="/tags/prerender-spa-plugin/" style="font-size: 13.5px;">prerender-spa-plugin</a> <a href="/tags/seo/" style="font-size: 13.5px;">seo</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Node/">Node</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/29/koa/" class="title">koa基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-29T03:11:59.000Z" itemprop="datePublished">2020-04-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/blog/">blog</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/29/hexo/" class="title">hexo 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-29T01:54:54.000Z" itemprop="datePublished">2020-04-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Node/">Node</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/28/express/" class="title">express基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-28T07:35:11.000Z" itemprop="datePublished">2020-04-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Node/">Node</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/28/node/" class="title">node开发环境配置</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-28T06:57:46.000Z" itemprop="datePublished">2020-04-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Vue/">Vue</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/28/prerender2/" class="title">vue-cli2.0版本 prerender 预渲染</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-28T03:26:07.000Z" itemprop="datePublished">2020-04-28</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-hexo" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo 基础
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/04/29/hexo/" class="article-date">
+	  <time datetime="2020-04-29T01:54:54.000Z" itemprop="datePublished">2020-04-29</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/hexo/" rel="tag">hexo</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/29/hexo/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 11(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="前提"><a class="markdownIt-Anchor" href="#前提"></a> 前提</h2>
+<ul>
+<li>Node10^</li>
+<li>git</li>
+</ul>
+<h2 id="什么是-hexo"><a class="markdownIt-Anchor" href="#什么是-hexo"></a> 什么是 Hexo？</h2>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h2 id="安装-hexo"><a class="markdownIt-Anchor" href="#安装-hexo"></a> 安装 Hexo</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h2 id="建站"><a class="markdownIt-Anchor" href="#建站"></a> 建站</h2>
+<p>1、 执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>2、 工程默认结构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去</span></span><br><span class="line">├── _config.yml   <span class="comment">// 网站的 配置 信息，您可以在此配置大部分的参数</span></span><br><span class="line">├── package.json  <span class="comment">// 应用程序的信息。EJS, Stylus 和 Markdown renderer 已默认安装，也可以自由移除</span></span><br><span class="line">├── scaffolds     <span class="comment">// 模版 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件</span></span><br><span class="line">├── source        <span class="comment">// 资源文件夹是存放用户资源的地方。</span></span><br><span class="line">|    ├── _drafts  <span class="comment">// </span></span><br><span class="line">|    └── _posts   <span class="comment">// 除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略</span></span><br><span class="line">└── themes        <span class="comment">// 主题 文件夹。Hexo 会根据主题来生成静态页面</span></span><br></pre></td></tr></table></figure>
+<h2 id="_configyml-配置"><a class="markdownIt-Anchor" href="#_configyml-配置"></a> _config.yml 配置</h2>
+<p>1、 <strong>网站</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>网站标题</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>网站副标题</td>
+</tr>
+<tr>
+<td>description</td>
+<td>网站描述，主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>网站的关键词。使用半角逗号 , 分隔多个关键词。</td>
+</tr>
+<tr>
+<td>author</td>
+<td>您的名字，用于主题显示文章的作者</td>
+</tr>
+<tr>
+<td>language</td>
+<td>网站使用的语言。对于简体中文用户来说，使用不同的主题可能需要设置成不同的值，请参考你的主题的文档自行设置，常见的有 zh-Hans和 zh-CN</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>网站时区。Hexo 默认使用您电脑的时区。请参考 时区列表 进行设置，如 America/New_York, Japan, 和 UTC 。一般的，对于中国大陆地区可以使用 Asia/Shanghai</td>
+</tr>
+</tbody>
+</table>
+<p>2、 <strong>网址</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>网址</td>
+<td></td>
+</tr>
+<tr>
+<td>root</td>
+<td>网站根目录</td>
+<td></td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>文章的 永久链接 格式</td>
+<td>:year/:month/:day/:title/</td>
+</tr>
+<tr>
+<td>permalink_defaults</td>
+<td>永久链接中各部分的默认值</td>
+<td></td>
+</tr>
+<tr>
+<td>pretty_urls</td>
+<td>改写 permalink 的值来美化 URL</td>
+<td></td>
+</tr>
+<tr>
+<td>pretty_urls.trailing_index</td>
+<td>是否在永久链接中保留尾部的 index.html，设置为 false 时去除</td>
+<td>true</td>
+</tr>
+<tr>
+<td>pretty_urls.trailing_html</td>
+<td>是否在永久链接中保留尾部的 .html, 设置为 false 时去除 (对尾部的 index.html无效)</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>网站存放在子目录,如果您的网站存放在子目录中，例如 <a href="http://yoursite.com/blog%EF%BC%8C%E5%88%99%E8%AF%B7%E5%B0%86%E6%82%A8%E7%9A%84" target="_blank" rel="noopener">http://yoursite.com/blog，则请将您的</a> url 设为 <a href="http://yoursite.com/blog" target="_blank" rel="noopener">http://yoursite.com/blog</a> 并把 root 设为 /blog/</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 比如，一个页面的永久链接是 http://example.com/foo/bar/index.html</span></span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: <span class="literal">false</span></span><br><span class="line"><span class="comment"># 此时页面的永久链接会变为 http://example.com/foo/bar/</span></span><br></pre></td></tr></table></figure>
+<p>3、<strong>目录</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source_dir</td>
+<td>资源文件夹，这个文件夹用来存放内容。</td>
+<td>source</td>
+</tr>
+<tr>
+<td>public_dir</td>
+<td>公共文件夹，这个文件夹用于存放生成的站点文件。</td>
+<td>public</td>
+</tr>
+<tr>
+<td>tag_dir</td>
+<td>标签文件夹</td>
+<td>tags</td>
+</tr>
+<tr>
+<td>archive_dir</td>
+<td>归档文件夹</td>
+<td>archives</td>
+</tr>
+<tr>
+<td>category_dir</td>
+<td>分类文件夹</td>
+<td>categories</td>
+</tr>
+<tr>
+<td>code_dir	Include code</td>
+<td>文件夹，source_dir 下的子目录</td>
+<td>downloads/code</td>
+</tr>
+<tr>
+<td>i18n_dir</td>
+<td>国际化（i18n）文件夹</td>
+<td>:lang</td>
+</tr>
+<tr>
+<td>skip_render</td>
+<td>跳过指定文件的渲染。匹配到的文件将会被不做改动地复制到 public 目录中。您可使用 glob 表达式来匹配路径。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">skip_render: <span class="string">"mypage/**/*"</span></span><br><span class="line"><span class="comment"># 将会直接将 `source/mypage/index.html` 和 `source/mypage/code.js` 不做改动地输出到 'public' 目录</span></span><br><span class="line"><span class="comment"># 你也可以用这种方法来跳过对指定文章文件的渲染</span></span><br><span class="line">skip_render: <span class="string">"_posts/test-post.md"</span></span><br><span class="line"><span class="comment"># 这将会忽略对 'test-post.md' 的渲染</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>提示</strong><br />
+如果您刚刚开始接触 Hexo，通常没有必要修改这一部分的值。</p>
+</blockquote>
+<p>4、<strong>文章</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>new_post_name</td>
+<td>新文章的文件名称</td>
+<td>:title.md</td>
+</tr>
+<tr>
+<td>default_layout</td>
+<td>预设布局</td>
+<td>post</td>
+</tr>
+<tr>
+<td>auto_spacing</td>
+<td>在中文和英文之间加入空格</td>
+<td>false</td>
+</tr>
+<tr>
+<td>titlecase</td>
+<td>把标题转换为</td>
+<td>title case	false</td>
+</tr>
+<tr>
+<td>external_link</td>
+<td>在新标签中打开链接</td>
+<td>true</td>
+</tr>
+<tr>
+<td>external_link.enable</td>
+<td>在新标签中打开链接</td>
+<td>true</td>
+</tr>
+<tr>
+<td>external_link.field</td>
+<td>对整个网站（site）生效或仅对文章（post）生效</td>
+<td>site</td>
+</tr>
+<tr>
+<td>external_link.exclude</td>
+<td>需要排除的域名。主域名和子域名如 www 需分别配置</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>filename_case</td>
+<td>把文件名称转换为 (1) 小写或 (2) 大写</td>
+<td>0</td>
+</tr>
+<tr>
+<td>render_drafts</td>
+<td>显示草稿</td>
+<td>false</td>
+</tr>
+<tr>
+<td>post_asset_folder</td>
+<td>启动 Asset 文件夹</td>
+<td>false</td>
+</tr>
+<tr>
+<td>relative_link</td>
+<td>把链接改为与根目录的相对位址</td>
+<td>false</td>
+</tr>
+<tr>
+<td>future</td>
+<td>显示未来的文章</td>
+<td>true</td>
+</tr>
+<tr>
+<td>highlight</td>
+<td>代码块的设置</td>
+<td></td>
+</tr>
+<tr>
+<td>highlight.enable</td>
+<td>开启代码块高亮</td>
+<td>true</td>
+</tr>
+<tr>
+<td>highlight.auto_detect</td>
+<td>如果未指定语言，则启用自动检测</td>
+<td>false</td>
+</tr>
+<tr>
+<td>highlight.line_number</td>
+<td>显示行数</td>
+<td></td>
+</tr>
+<tr>
+<td>Enabling</td>
+<td>this option will also enable wrap option</td>
+<td>true</td>
+</tr>
+<tr>
+<td>highlight.tab_replace</td>
+<td>用 n 个空格替换 tabs；如果值为空，则不会替换tabs</td>
+<td>‘’</td>
+</tr>
+<tr>
+<td>highlight.wrap</td>
+<td>Wrap the code block in table</td>
+<td>true</td>
+</tr>
+<tr>
+<td>highlight.hljs</td>
+<td>Use the hljs-* prefix for CSS classes</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>相对地址</strong><br />
+默认情况下，Hexo 生成的超链接都是绝对地址。例如，如果您的网站域名为 <a href="http://example.com" target="_blank" rel="noopener">example.com</a>,您有一篇文章名为 hello，那么绝对链接可能像这样：<a href="http://example.com/hello.html%EF%BC%8C%E5%AE%83%E6%98%AF%E7%BB%9D%E5%AF%B9%E4%BA%8E%E5%9F%9F%E5%90%8D%E7%9A%84%E3%80%82%E7%9B%B8%E5%AF%B9%E9%93%BE%E6%8E%A5%E5%83%8F%E8%BF%99%E6%A0%B7%EF%BC%9A/hello.html%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%E8%AF%B4%EF%BC%8C%E6%97%A0%E8%AE%BA%E7%94%A8%E4%BB%80%E4%B9%88%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E8%AF%A5%E7%AB%99%E7%82%B9%EF%BC%8C%E9%83%BD%E6%B2%A1%E6%9C%89%E5%85%B3%E7%B3%BB%EF%BC%8C%E8%BF%99%E5%9C%A8%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%97%B6%E5%8F%AF%E8%83%BD%E7%94%A8%E5%88%B0%E3%80%82%E9%80%9A%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8%E7%BB%9D%E5%AF%B9%E5%9C%B0%E5%9D%80%E3%80%82" target="_blank" rel="noopener">http://example.com/hello.html，它是绝对于域名的。相对链接像这样：/hello.html，也就是说，无论用什么域名访问该站点，都没有关系，这在进行反向代理时可能用到。通常情况下，建议使用绝对地址。</a></p>
+</blockquote>
+<p>5、<strong>分类&amp;标签</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default_category</td>
+<td>默认分类</td>
+<td>uncategorized</td>
+</tr>
+<tr>
+<td>category_map</td>
+<td>分类别名</td>
+<td></td>
+</tr>
+<tr>
+<td>tag_map</td>
+<td>标签别名</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>6、 <strong>日期 / 时间格式</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date_format</td>
+<td>日期格式</td>
+<td>YYYY-MM-DD</td>
+</tr>
+<tr>
+<td>time_format</td>
+<td>时间格式</td>
+<td>HH:mm:ss</td>
+</tr>
+<tr>
+<td>use_date_for_updated</td>
+<td>启用以后，如果 Front Matter 中没有指定 updated， post.updated 将会使用 date 的值而不是文件的创建时间。在 Git 工作流中这个选项会很有用</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p>7、<strong>分页</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>per_page</td>
+<td>每页显示的文章量 (0 = 关闭分页功能)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>pagination_dir</td>
+<td>分页目录</td>
+<td>page</td>
+</tr>
+</tbody>
+</table>
+<p>8、<strong>扩展</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>theme</td>
+<td>当前主题名称。值为false时禁用主题</td>
+</tr>
+<tr>
+<td>theme_config</td>
+<td>主题的配置文件。在这里放置的配置会覆盖主题目录下的 _config.yml 中的配置</td>
+</tr>
+<tr>
+<td>deploy</td>
+<td>部署部分的设置</td>
+</tr>
+<tr>
+<td>meta_generator</td>
+<td>Meta generator 标签。 值为 false 时 Hexo 不会在头部插入该标签</td>
+</tr>
+</tbody>
+</table>
+<p>9、<strong>包括或不包括目录和文件</strong></p>
+<blockquote>
+<p>在 Hexo 配置文件中，通过设置 include/exclude 可以让 Hexo 进行处理或忽略某些目录和文件夹。你可以使用 glob 表达式 对目录和文件进行匹配。<br />
+include and exclude options only apply to the source/ folder, whereas ignore option applies to all folders.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>include</td>
+<td>Hexo 默认会忽略隐藏文件和文件夹（包括名称以下划线和 . 开头的文件和文件夹，Hexo 的 _posts 和 _data 等目录除外）。通过设置此字段将使 Hexo 处理他们并将它们复制到 source 目录下。</td>
+</tr>
+<tr>
+<td>exclude</td>
+<td>Hexo 会忽略这些文件和目录</td>
+</tr>
+<tr>
+<td>ignore</td>
+<td>Ignore files/folders</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Include/Exclude Files/Folders</span></span><br><span class="line">include:</span><br><span class="line">  - <span class="string">".nojekyll"</span></span><br><span class="line">  <span class="comment"># 包括 'source/css/_typing.css'</span></span><br><span class="line">  - <span class="string">"css/_typing.css"</span></span><br><span class="line">  <span class="comment"># 包括 'source/_css/' 中的任何文件，但不包括子目录及其其中的文件。</span></span><br><span class="line">  - <span class="string">"_css/*"</span></span><br><span class="line">  <span class="comment"># 包含 'source/_css/' 中的任何文件和子目录下的任何文件</span></span><br><span class="line">  - <span class="string">"_css/**/*"</span></span><br><span class="line"></span><br><span class="line">exclude:</span><br><span class="line">  <span class="comment"># 不包括 'source/js/test.js'</span></span><br><span class="line">  - <span class="string">"js/test.js"</span></span><br><span class="line">  <span class="comment"># 不包括 'source/js/' 中的文件、但包括子目录下的所有目录和文件</span></span><br><span class="line">  - <span class="string">"js/*"</span></span><br><span class="line">  <span class="comment"># 不包括 'source/js/' 中的文件和子目录下的任何文件</span></span><br><span class="line">  - <span class="string">"js/**/*"</span></span><br><span class="line">  <span class="comment"># 不包括 'source/js/' 目录下的所有文件名以 'test' 开头的文件，但包括其它文件和子目录下的单文件</span></span><br><span class="line">  - <span class="string">"js/test*"</span></span><br><span class="line">  <span class="comment"># 不包括 'source/js/' 及其子目录中任何以 'test' 开头的文件</span></span><br><span class="line">  - <span class="string">"js/**/test*"</span></span><br><span class="line">  <span class="comment"># 不要用 exclude 来忽略 'source/_posts/' 中的文件。你应该使用 'skip_render'，或者在要忽略的文件的文件名之前加一个下划线 '_'</span></span><br><span class="line">  <span class="comment"># 在这里配置一个 - "_posts/hello-world.md" 是没有用的。</span></span><br><span class="line"></span><br><span class="line">ignore:</span><br><span class="line">  <span class="comment"># Ignore any folder named 'foo'.</span></span><br><span class="line">  - <span class="string">"**/foo"</span></span><br><span class="line">  <span class="comment"># Ignore 'foo' folder in 'themes/' only.</span></span><br><span class="line">  - <span class="string">"**/themes/*/foo"</span></span><br><span class="line">  <span class="comment"># Same as above, but applies to every subfolders of 'themes/'.</span></span><br><span class="line">  - <span class="string">"**/themes/**/foo"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>列表中的每一项都必须用单引号或双引号包裹起来。<br />
+include 和 exclude 并不适用于 themes/ 目录下的文件。如果需要忽略 themes/ 目录下的部分文件或文件夹，可以使用 ignore 或在文件名之前添加下划线 _。</p>
+</blockquote>
+<p><strong>使用代替配置文件</strong></p>
+<blockquote>
+<p>可以在 hexo-cli 中使用 --config 参数来指定自定义配置文件的路径。你可以使用一个 YAML 或 JSON 文件的路径，也可以使用逗号分隔（无空格）的多个 YAML 或 JSON 文件的路径。例如：</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use 'custom.yml' in place of '_config.yml'</span></span><br><span class="line">$ hexo server --config custom.yml</span><br><span class="line"></span><br><span class="line"><span class="comment"># use 'custom.yml' &amp; 'custom2.json', prioritizing 'custom3.yml', then 'custom2.json'</span></span><br><span class="line">$ hexo generate --config custom.yml,custom2.json,custom3.yml</span><br></pre></td></tr></table></figure>
+<p>当你指定了多个配置文件以后，Hexo 会按顺序将这部分配置文件合并成一个 _multiconfig.yml。如果遇到重复的配置，排在后面的文件的配置会覆盖排在前面的文件的配置。这个原则适用于任意数量、任意深度的 YAML 和 JSON 文件。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例如，使用 --options 指定了两个自定义配置文件：</span></span><br><span class="line">hexo generate --config custom.yml,custom2.json</span><br></pre></td></tr></table></figure>
+<p>如果 custom.yml 中指定了 foo: bar，在 custom2.json 中指定了 “foo”: “dinosaur”，那么在 _multiconfig.yml 中你会得到 foo: dinosaur。</p>
+<p><strong>覆盖主题配置</strong><br />
+通常情况下，Hexo 主题是一个独立的项目，并拥有一个独立的 _config.yml 配置文件。<br />
+你可以在站点的 _config.yml 配置文件中配置你的主题，这样你就不需要 fork 一份主题并维护主题独立的配置文件。</p>
+<p>以下是一个覆盖主题配置的例子：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line">theme_config:</span><br><span class="line">  bio: <span class="string">"My awesome bio"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes/my-theme/_config.yml</span></span><br><span class="line">bio: <span class="string">"Some generic bio"</span></span><br><span class="line">logo: <span class="string">"a-cool-image.png"</span></span><br></pre></td></tr></table></figure>
+<p>最终主题配置的输出是：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  bio: "My awesome bio",</span><br><span class="line">  logo: "a-cool-image.png"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="指令"><a class="markdownIt-Anchor" href="#指令"></a> 指令</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hexo init [folder]</td>
+<td>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站</td>
+</tr>
+<tr>
+<td>hexo new [layout] title</td>
+<td>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来</td>
+</tr>
+<tr>
+<td>hexo generate</td>
+<td>生成静态文件(简写写：hexo g)</td>
+</tr>
+<tr>
+<td>hexo publish [layout] filename</td>
+<td>发表草稿</td>
+</tr>
+<tr>
+<td>hexo server</td>
+<td>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></td>
+</tr>
+<tr>
+<td>hexo deploy</td>
+<td>部署网站(简写：hexo d)</td>
+</tr>
+<tr>
+<td>hexo render file1 [file2] …</td>
+<td>渲染文件</td>
+</tr>
+<tr>
+<td>hexo migrate type</td>
+<td>从其他博客系统 迁移内容。</td>
+</tr>
+<tr>
+<td>hexo clean</td>
+<td>清除缓存文件 (db.json) 和已生成的静态文件 (public)</td>
+</tr>
+<tr>
+<td>hexo list type</td>
+<td>列出网站资料</td>
+</tr>
+<tr>
+<td>hexo version</td>
+<td>显示 Hexo 版本</td>
+</tr>
+<tr>
+<td>hexo --safe</td>
+<td>在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。</td>
+</tr>
+<tr>
+<td>hexo --debug</td>
+<td>在终端中显示调试信息并记录到 debug.log</td>
+</tr>
+<tr>
+<td>hexo --silent</td>
+<td>简洁模式,隐藏终端信息</td>
+</tr>
+<tr>
+<td>hexo --draft</td>
+<td>显示 source/_drafts 文件夹中的草稿文章</td>
+</tr>
+<tr>
+<td>hexo --cwd /path/to/cwd</td>
+<td>自定义当前工作目录（Current working directory）的路径</td>
+</tr>
+</tbody>
+</table>
+<p><strong>自定义配置文件的路径</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 custom.yml 代替默认的 _config.yml</span></span><br><span class="line">$ hexo server --config custom.yml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 custom.yml 和 custom2.json，其中 custom2.json 优先级更高</span></span><br><span class="line">$ hexo generate --config custom.yml,custom2.json,custom3.yml</span><br></pre></td></tr></table></figure>
+<p>自定义配置文件的路径，指定这个参数后将不再使用默认的 _config.yml。<br />
+你可以使用一个 YAML 或 JSON 文件的路径，也可以使用逗号分隔（无空格）的多个 YAML 或 JSON 文件的路径。例如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 custom.yml 代替默认的 _config.yml</span></span><br><span class="line">$ hexo server --config custom.yml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 custom.yml, custom2.json 和 custom3.yml，其中 custom3.yml 优先级最高，其次是 custom2.json</span></span><br><span class="line">$ hexo generate --config custom.yml,custom2.json,custom3.yml</span><br></pre></td></tr></table></figure>
+<p>当你指定了多个配置文件以后，Hexo 会按顺序将这部分配置文件合并成一个 _multiconfig.yml。如果遇到重复的配置，排在后面的文件的配置会覆盖排在前面的文件的配置。这个原则适用于任意数量、任意深度的 YAML 和 JSON 文件。</p>
+<h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2>
+<ul>
+<li><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">hexo</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://pengdon.github.io/2020/04/29/hexo/" title="hexo 基础" target="_blank" rel="external">https://pengdon.github.io/2020/04/29/hexo/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/PengDon" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/PengDon" target="_blank"><span class="text-dark">don</span><small class="ml-1x">Web Developer</small></a></h3>
+        <div>拥抱未来，用技术改善生活。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+    
+      <div id="gitalkComments"></div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/04/29/koa/" title="koa基础"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/04/28/express/" title="express基础"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/PengDon" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '58b814b7330e819231fe',
+    clientSecret: 'fc0bfe0d2bab1f8f76f75d32aef724404ceb1413',
+    repo: 'pengdon.github.io',
+    owner: 'PengDon',
+    admin: ['PengDon'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('gitalkComments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>

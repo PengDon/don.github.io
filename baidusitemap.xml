@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://pengdon.github.io/2020/04/29/koa/</loc>
+    <lastmod>2020-04-29</lastmod>
+  </url>  <url>
     <loc>https://pengdon.github.io/2020/04/28/express/</loc>
-    <lastmod>2020-04-28</lastmod>
+    <lastmod>2020-04-29</lastmod>
+  </url>  <url>
+    <loc>https://pengdon.github.io/2020/04/29/hexo/</loc>
+    <lastmod>2020-04-29</lastmod>
   </url>  <url>
     <loc>https://pengdon.github.io/2020/04/28/node/</loc>
     <lastmod>2020-04-28</lastmod>
