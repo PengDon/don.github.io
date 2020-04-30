@@ -17,19 +17,15 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>JavaScript算法1 | don</title>
-  <meta name="description" content="1. 输出没有连续重复字符的组合数  问题描述：把一个字符串中的所有的字符重新排列，然后生成一个新的字符串，返回的新字符串中没有连续重复的字符。连续重复是以单个字符为判断标准。 例如：aab应该返回 2， 因为它总共有 6 种排列方式： aab， aab， aba， aba， baa， baa，但是其中只有 2 个没有连续重复的字符（字符 a 是本例中的重复字符）：aba，aba   预期结">
-<meta name="keywords" content="Javascript">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript算法1">
-<meta property="og:url" content="https:&#x2F;&#x2F;pengdon.github.io&#x2F;2020&#x2F;04&#x2F;27&#x2F;arithmetic&#x2F;index.html">
+  <title>don</title>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="pengdon">
+<meta property="og:url" content="https:&#x2F;&#x2F;pengdon.github.io&#x2F;page&#x2F;2&#x2F;index.html">
 <meta property="og:site_name" content="pengdon">
-<meta property="og:description" content="1. 输出没有连续重复字符的组合数  问题描述：把一个字符串中的所有的字符重新排列，然后生成一个新的字符串，返回的新字符串中没有连续重复的字符。连续重复是以单个字符为判断标准。 例如：aab应该返回 2， 因为它总共有 6 种排列方式： aab， aab， aba， aba， baa， baa，但是其中只有 2 个没有连续重复的字符（字符 a 是本例中的重复字符）：aba，aba   预期结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-28T06:56:32.415Z">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://pengdon.github.io/2020/04/27/arithmetic/index.html">
+  <link rel="canonical" href="https://pengdon.github.io/page/2/index.html">
   
   
     <link rel="icon" href="/favicon.png" type="image/x-icon">
@@ -313,17 +309,18 @@
 </aside>
 
   
+  <main class="main" role="main">
   
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-arithmetic" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+    <div class="content">
+  <article id="post-vueSsr1" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
-    <h1 class="article-title" itemprop="name">
-      JavaScript算法1
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/14/vueSsr1/">vue-ssr基本用法</a>
     </h1>
   
 
@@ -331,20 +328,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/04/27/arithmetic/" class="article-date">
-	  <time datetime="2020-04-27T01:23:56.950Z" itemprop="datePublished">2020-04-27</time>
+	<a href="/2019/11/14/vueSsr1/" class="article-date">
+	  <time datetime="2019-11-14T12:11:27.000Z" itemprop="datePublished">2019-11-14</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Arithmetic/">Arithmetic</a>
+    <a class="article-category-link" href="/categories/Vue-SSR/">Vue-SSR</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Javascript/" rel="tag">Javascript</a>
+	<a class="article-tag-link" href="/tags/vue/" rel="tag">vue</a>
   </span>
 
 
@@ -356,10 +353,10 @@
 		</span>
 	</span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/27/arithmetic/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/14/vueSsr1/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 639(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 507(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
@@ -369,37 +366,30 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
-<h3 id="1-输出没有连续重复字符的组合数"><a class="markdownIt-Anchor" href="#1-输出没有连续重复字符的组合数"></a> 1. 输出没有连续重复字符的组合数</h3>
-<blockquote>
-<p><strong>问题描述</strong>：把一个字符串中的所有的字符重新排列，然后生成一个新的字符串，返回的新字符串中没有连续重复的字符。连续重复是以单个字符为判断标准。<br />
-例如：aab应该返回 2， 因为它总共有 6 种排列方式： aab， aab， aba， aba， baa， baa，但是其中只有 2 个没有连续重复的字符（字符 a 是本例中的重复字符）：aba，aba</p>
-</blockquote>
-<blockquote>
-<p><strong>预期结果</strong>：<br />
-permAlone(“aab”)应该返回 2。<br />
-permAlone(“aaa”)应该返回 0。<br />
-permAlone(“aabb”)应该返回 8。<br />
-permAlone(“abcdefa”)应该返回 3600。<br />
-permAlone(“abfdefa”)应该返回 2640。<br />
-permAlone(“aaab”)应该返回 0。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> permAlone(str) &#123;</span><br><span class="line">    // 匹配是否有重复字符</span><br><span class="line">    <span class="built_in">let</span> reg = /(\w)\1+/g;</span><br><span class="line">    <span class="keyword">if</span> (str.match(reg) !== null &amp;&amp; str.match(reg)[0] === str) <span class="built_in">return</span> 0;</span><br><span class="line">    <span class="built_in">let</span> arr = str.split(<span class="string">''</span>);</span><br><span class="line">    // 利用es6解构赋值交换元素位置</span><br><span class="line">    <span class="keyword">function</span> swap(n1,n2)&#123;</span><br><span class="line">        [arr[n1],arr[n2]] = [arr[n2],arr[n1]]</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">let</span> tempArr = [];</span><br><span class="line">    <span class="keyword">function</span> generate(len)&#123;</span><br><span class="line">        <span class="keyword">if</span>(len === 1 &amp;&amp; !arr.join(<span class="string">''</span>).match(reg))&#123;</span><br><span class="line">            tempArr.push(arr.join(<span class="string">''</span>))</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i!=len;++i)&#123;</span><br><span class="line">                generate(len-1);</span><br><span class="line">                swap(len%2?0:i,len-1)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    generate(arr.length) </span><br><span class="line">    // 利用filter去重返回新数组</span><br><span class="line">    <span class="built_in">return</span> tempArr.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-输出对等分差"><a class="markdownIt-Anchor" href="#2-输出对等分差"></a> 2. 输出对等分差</h3>
-<blockquote>
-<p><strong>问题描述</strong>：两个集合的对称差分是只属于其中一个集合，而不属于另一个集合的元素组成的集合，例如：集合let A = [ 1, 2, 3]和let B = [ 2, 3, 4]的对称差分为A △ B = C = [ 1, 4]。 集合论中的这个运算相当于布尔逻辑中的异或运算。<br />
-设定两个数组 (例如：let A = [1, 2, 3]，let B = [2, 3, 4])作为参数传入，返回对称差分数组（A △ B = C = [1, 4]），且数组中没有重复项。</p>
-</blockquote>
-<blockquote>
-<p><strong>预期结果</strong>：<br />
-sym([1, 2, 3, 3], [5, 2, 1, 4])应该返回[3, 4, 5]。<br />
-sym([1, 2, 3], [5, 2, 1, 4, 5])应该返回[3, 4, 5]。<br />
-sym([1, 2, 5], [2, 3, 5], [3, 4, 5])应该返回[1, 4, 5]。<br />
-sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5])应该返回[1, 4, 5]。<br />
-sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3])应该返回[2, 3, 4, 6, 7]。<br />
-sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3], [5, 3, 9, 8], [1])应该返回[1, 2, 4, 5, 6, 7, 8, 9]。</p>
-</blockquote>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> sym(...args) &#123;</span><br><span class="line">    // 利用reduce组合数据，再利用Set去重</span><br><span class="line">    <span class="built_in">return</span> [...new Set(args.reduce(diffArray))].sort();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 区分两个数组,返回不同部分</span><br><span class="line"><span class="keyword">function</span> diffArray(arr1, arr2) &#123;</span><br><span class="line">   <span class="built_in">return</span> arr1</span><br><span class="line">        .filter(element =&gt; !arr2.includes(element))</span><br><span class="line">        .concat(arr2.filter(element =&gt; !arr1.includes(element)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="基础"><a class="markdownIt-Anchor" href="#基础"></a> 基础</h3>
+<h4 id="1-先创建一个最基础的nextjs项目"><a class="markdownIt-Anchor" href="#1-先创建一个最基础的nextjs项目"></a> 1. 先创建一个最基础的Nextjs项目</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir vue-srr-demo</span><br><span class="line"><span class="built_in">cd</span> vue-srr-demo</span><br><span class="line">npm init -y</span><br><span class="line">npm install vue vue-server-renderer --save</span><br></pre></td></tr></table></figure>
+<h4 id="2-创建一个appjs文件内容如下"><a class="markdownIt-Anchor" href="#2-创建一个appjs文件内容如下"></a> 2. 创建一个app.js文件,内容如下：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const Vue = require(<span class="string">'vue'</span>)</span><br><span class="line">module.exports = <span class="keyword">function</span> createApp (context) &#123;</span><br><span class="line">    <span class="built_in">return</span> new Vue(&#123;</span><br><span class="line">        data: &#123;</span><br><span class="line">          url: context.url</span><br><span class="line">        &#125;,</span><br><span class="line">        template: `&lt;div&gt;Vue SSR URL: &#123;&#123; url &#125;&#125;&lt;/div&gt;`</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-与服务器集成"><a class="markdownIt-Anchor" href="#3-与服务器集成"></a> 3. 与服务器集成</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express --save</span><br></pre></td></tr></table></figure>
+<h4 id="4-创建一个serverjs文件内容如下"><a class="markdownIt-Anchor" href="#4-创建一个serverjs文件内容如下"></a> 4. 创建一个server.js文件,内容如下：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const server = require(<span class="string">'express'</span>)()</span><br><span class="line"></span><br><span class="line">server.get(<span class="string">'/ssr'</span>, (request, response) =&gt; &#123;</span><br><span class="line">   response.send(<span class="string">"当前访问URL "</span>+request.url)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(8000)</span><br></pre></td></tr></table></figure>
+<h4 id="5-创建一个页面模板indexhtml内容如下"><a class="markdownIt-Anchor" href="#5-创建一个页面模板indexhtml内容如下"></a> 5. 创建一个页面模板index.html,内容如下：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!--vue-ssr-outlet--&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="6-修改serverjs文件内容如下"><a class="markdownIt-Anchor" href="#6-修改serverjs文件内容如下"></a> 6. 修改server.js文件，内容如下：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const server = require(<span class="string">'express'</span>)()</span><br><span class="line">const createApp = require(<span class="string">'./app'</span>)</span><br><span class="line">const renderer = require(<span class="string">'vue-server-renderer'</span>).createRenderer()</span><br><span class="line"></span><br><span class="line">server.get(<span class="string">'/ssr'</span>, (request, response) =&gt; &#123;</span><br><span class="line">    const context = &#123; url: request.url &#125;</span><br><span class="line">    const app = createApp(context)</span><br><span class="line">    renderer.renderToString(app, (err, doc) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) throw err</span><br><span class="line">    response.send(doc)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(8000)</span><br></pre></td></tr></table></figure>
+<h4 id="7-启动服务查看效果"><a class="markdownIt-Anchor" href="#7-启动服务查看效果"></a> 7. 启动服务查看效果</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node server.js</span><br><span class="line"><span class="comment"># 或者安装nodemon自动重启插件[npm install -g  nodemon]</span></span><br><span class="line">nodemon server.js</span><br></pre></td></tr></table></figure>
+<h4 id="8-在浏览器访问httplocalhost8000ssr"><a class="markdownIt-Anchor" href="#8-在浏览器访问httplocalhost8000ssr"></a> 8. 在浏览器访问：<a href="http://localhost:8000/ssr" target="_blank" rel="noopener">http://localhost:8000/ssr</a></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue SSR URL: /ssr</span><br></pre></td></tr></table></figure>
+<h4 id="9-模板插值修改indexhtml"><a class="markdownIt-Anchor" href="#9-模板插值修改indexhtml"></a> 9. 模板插值，修改index.html</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;!-- 使用双花括号(double-mustache)进行 HTML 转义插值(HTML-escaped interpolation) --&gt;</span><br><span class="line">    &lt;title&gt;&#123;&#123; title &#125;&#125;&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 使用三花括号(triple-mustache)进行 HTML 不转义插值(non-HTML-escaped interpolation) --&gt;</span><br><span class="line">    &#123;&#123;&#123; meta &#125;&#125;&#125;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!--vue-ssr-outlet--&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="10-修改serverjs文件内容如下"><a class="markdownIt-Anchor" href="#10-修改serverjs文件内容如下"></a> 10. 修改server.js文件，内容如下：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const server = require(<span class="string">'express'</span>)()</span><br><span class="line">const createApp = require(<span class="string">'./app'</span>)</span><br><span class="line">const renderer = require(<span class="string">'vue-server-renderer'</span>).createRenderer(&#123;</span><br><span class="line">    template: require(<span class="string">'fs'</span>).readFileSync(<span class="string">'./index.html'</span>, <span class="string">'utf-8'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.get(<span class="string">'/ssr'</span>, (request, response) =&gt; &#123;</span><br><span class="line">    const context = &#123;</span><br><span class="line">        url: request.url, </span><br><span class="line">        title: <span class="string">'vue-ssr'</span>, </span><br><span class="line">        meta: </span><br><span class="line">            `</span><br><span class="line">            &lt;meta ...&gt;</span><br><span class="line">            &lt;meta ...&gt;</span><br><span class="line">            `</span><br><span class="line">        &#125;</span><br><span class="line">    const app = createApp(context)</span><br><span class="line">    renderer.renderToString(app, context, (err, doc) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) throw err</span><br><span class="line">        response.send(doc)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(8000)</span><br></pre></td></tr></table></figure>
+<h4 id="11-启动服务查看网页源代码发现title和meta标签成功插入"><a class="markdownIt-Anchor" href="#11-启动服务查看网页源代码发现title和meta标签成功插入"></a> 11. 启动服务，查看网页源代码，发现title和meta标签成功插入</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node server.js</span><br><span class="line"><span class="comment"># 或者安装nodemon自动重启插件[npm install -g  nodemon]</span></span><br><span class="line">nodemon server.js</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <div class="article-footer">
@@ -408,7 +398,7 @@ sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3], [5, 3, 9, 8], [1])�
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://pengdon.github.io/2020/04/27/arithmetic/" title="JavaScript算法1" target="_blank" rel="external">https://pengdon.github.io/2020/04/27/arithmetic/</a>
+      <a href="https://pengdon.github.io/2019/11/14/vueSsr1/" title="vue-ssr基本用法" target="_blank" rel="external">https://pengdon.github.io/2019/11/14/vueSsr1/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -438,44 +428,37 @@ sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3], [5, 3, 9, 8], [1])�
     </div>
   </article>
   
-    
-  <section id="comments">
-    
-      <div id="gitalkComments"></div>    
-    
-  </section>
-
-
-  
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/2020/04/28/prerender/" title="vue-cli3.0版本 prerender 预渲染"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/2019/11/14/nextjs/" title="nextjs+typescript"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
-  
-  
-  
-  <div class="bar-right">
-    
-  </div>
-  </div>
-</nav>
   
 
-
+  
+    
+    <nav class="bar bar-footer clearfix" data-stick-bottom>
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev">
+                <a href="/">
+                    <i class="icon icon-angle-left"></i>
+                    上一页
+                </a>
+            </li>
+            
+            
+            <li class="next disabled">
+                <a href="javascript:;" target="_blank" rel="noopener">
+                    下一页
+                    <i class="icon icon-angle-right"></i>                    
+                </a>
+            </li>
+            
+        </ul>
+        <div class="total-article bar-right">Page 2 of 2</div>
+        </div>
+    </nav>
+    
+ 
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -523,27 +506,6 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
    
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-
-   
-    
-  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
-  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
-  <script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: '58b814b7330e819231fe',
-    clientSecret: 'fc0bfe0d2bab1f8f76f75d32aef724404ceb1413',
-    repo: 'pengdon.github.io',
-    owner: 'PengDon',
-    admin: ['PengDon'],
-    id: md5(location.pathname),
-    distractionFreeMode: true
-  })
-  gitalk.render('gitalkComments')
-  </script>
-
-      
 
 
 

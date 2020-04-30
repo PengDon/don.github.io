@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pengdon.github.io/2020/04/30/vueWebapck2/</loc>
+    
+    <lastmod>2020-04-30T02:13:42.900Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pengdon.github.io/2020/04/29/vueWebapck/</loc>
+    
+    <lastmod>2020-04-30T02:12:36.944Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://pengdon.github.io/2020/04/29/koa/</loc>
     
-    <lastmod>2020-04-29T06:28:23.304Z</lastmod>
+    <lastmod>2020-04-29T07:43:11.164Z</lastmod>
     
   </url>
   
@@ -65,9 +79,16 @@
   </url>
   
   <url>
+    <loc>https://pengdon.github.io/repository/index.html</loc>
+    
+    <lastmod>2020-04-28T01:37:40.736Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://pengdon.github.io/about/index.html</loc>
     
-    <lastmod>2020-04-28T01:40:55.616Z</lastmod>
+    <lastmod>2020-04-28T01:37:40.732Z</lastmod>
     
   </url>
   
