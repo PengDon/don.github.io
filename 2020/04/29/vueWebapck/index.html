@@ -18,15 +18,15 @@
   
   
   <title>vue webpack 从零开始搭建项目框架1 | don</title>
-  <meta name="description" content="主要实现最基础最简单的vue+webpack    安装前提 node10^ npm6^ vue2.6^ webpack^4  vue项目构成基本结构 1、引入vue库 2、html模板插槽，用于渲染数据 3、实例化Vue对象，用于处理数据(渲染、逻辑控制、展示、隐藏等) 例子： 123456789101112131415161718192021222324&amp;lt;!DOCTYPE html&amp;g">
+  <meta name="description" content="注意 主要实现最基础最简单的vue+webpack    安装前提 node10^ npm6^ vue2.6^ webpack^4  简写说明  -S --&amp;gt; --save -D --&amp;gt; --save-dev   vue项目构成基本结构 1、引入vue库 2、html模板插槽，用于渲染数据 3、实例化Vue对象，用于处理数据(渲染、逻辑控制、展示、隐藏等) 例子： 123456789">
 <meta name="keywords" content="vue,webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue webpack 从零开始搭建项目框架1">
 <meta property="og:url" content="https:&#x2F;&#x2F;pengdon.github.io&#x2F;2020&#x2F;04&#x2F;29&#x2F;vueWebapck&#x2F;index.html">
 <meta property="og:site_name" content="pengdon">
-<meta property="og:description" content="主要实现最基础最简单的vue+webpack    安装前提 node10^ npm6^ vue2.6^ webpack^4  vue项目构成基本结构 1、引入vue库 2、html模板插槽，用于渲染数据 3、实例化Vue对象，用于处理数据(渲染、逻辑控制、展示、隐藏等) 例子： 123456789101112131415161718192021222324&amp;lt;!DOCTYPE html&amp;g">
+<meta property="og:description" content="注意 主要实现最基础最简单的vue+webpack    安装前提 node10^ npm6^ vue2.6^ webpack^4  简写说明  -S --&amp;gt; --save -D --&amp;gt; --save-dev   vue项目构成基本结构 1、引入vue库 2、html模板插槽，用于渲染数据 3、实例化Vue对象，用于处理数据(渲染、逻辑控制、展示、隐藏等) 例子： 123456789">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-30T02:12:36.944Z">
+<meta property="og:updated_time" content="2020-04-30T08:22:14.024Z">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
   <link rel="canonical" href="https://pengdon.github.io/2020/04/29/vueWebapck/index.html">
@@ -187,7 +187,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Arithmetic/">Arithmetic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React-SSR/">React-SSR</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-SSR/">Vue-SSR</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-Webpack/">Vue-Webpack</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Arithmetic/">Arithmetic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React-SSR/">React-SSR</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-SSR/">Vue-SSR</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-Webpack/">Vue-Webpack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -197,7 +197,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/" rel="tag">Express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Koa/" rel="tag">Koa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Npm/" rel="tag">Npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prerender-spa-plugin/" rel="tag">prerender-spa-plugin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seo/" rel="tag">seo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/" rel="tag">Express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Koa/" rel="tag">Koa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Npm/" rel="tag">Npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prerender-spa-plugin/" rel="tag">prerender-spa-plugin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seo/" rel="tag">seo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -207,7 +207,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Express/" style="font-size: 13px;">Express</a> <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a> <a href="/tags/Koa/" style="font-size: 13px;">Koa</a> <a href="/tags/Node/" style="font-size: 13px;">Node</a> <a href="/tags/Npm/" style="font-size: 13px;">Npm</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/nextjs/" style="font-size: 13px;">nextjs</a> <a href="/tags/prerender-spa-plugin/" style="font-size: 13.5px;">prerender-spa-plugin</a> <a href="/tags/seo/" style="font-size: 13.5px;">seo</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/webpack/" style="font-size: 13.5px;">webpack</a>
+      <a href="/tags/Express/" style="font-size: 13px;">Express</a> <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a> <a href="/tags/Koa/" style="font-size: 13px;">Koa</a> <a href="/tags/Node/" style="font-size: 13px;">Node</a> <a href="/tags/Npm/" style="font-size: 13px;">Npm</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/nextjs/" style="font-size: 13px;">nextjs</a> <a href="/tags/prerender-spa-plugin/" style="font-size: 13.33px;">prerender-spa-plugin</a> <a href="/tags/seo/" style="font-size: 13.33px;">seo</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/webpack/" style="font-size: 13.67px;">webpack</a>
     </div>
   </div>
 
@@ -216,7 +216,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -228,6 +228,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Vue-Webpack/">Vue-Webpack</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/07/vueWebpack3/" class="title">vue webpack 从零开始搭建项目框架3</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-07T07:01:24.000Z" itemprop="datePublished">2020-05-07</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -284,21 +299,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2020-04-29T01:54:54.000Z" itemprop="datePublished">2020-04-29</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/Node/">Node</a>
-              </p>
-              <p class="item-title">
-                <a href="/2020/04/28/express/" class="title">express基础</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-04-28T07:35:11.000Z" itemprop="datePublished">2020-04-28</time>
               </p>
             </div>
           </li>
@@ -370,22 +370,22 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <blockquote>
-<p>主要实现最基础最简单的vue+webpack</p>
+<p><strong>注意</strong> 主要实现最基础最简单的vue+webpack</p>
 </blockquote>
 <hr />
 <h2 id="安装前提"><a class="markdownIt-Anchor" href="#安装前提"></a> 安装前提</h2>
 <p>node10^ npm6^ vue2.6^ webpack^4</p>
+<h2 id="简写说明"><a class="markdownIt-Anchor" href="#简写说明"></a> 简写说明</h2>
+<blockquote>
+<p>-S --&gt; --save<br />
+-D --&gt; --save-dev</p>
+</blockquote>
 <h2 id="vue项目构成基本结构"><a class="markdownIt-Anchor" href="#vue项目构成基本结构"></a> vue项目构成基本结构</h2>
 <p>1、引入vue库<br />
 2、html模板插槽，用于渲染数据<br />
 3、实例化Vue对象，用于处理数据(渲染、逻辑控制、展示、隐藏等)</p>
 <p>例子：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 1、引入依赖库 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 2、html模板插槽 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 实例化Vue对象 --&gt;</span></span><br><span class="line">  script&gt;</span><br><span class="line">    // 实例化vue对象并绑定数据</span><br><span class="line">    var app = new Vue(&#123;</span><br><span class="line">      el: '#app',</span><br><span class="line">      data: &#123;</span><br><span class="line">        message: '页面加载于 ' + new Date().toLocaleString()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="简写说明"><a class="markdownIt-Anchor" href="#简写说明"></a> 简写说明</h2>
-<blockquote>
-<p>-S --&gt; --save<br />
--D --&gt; --save-dev</p>
-</blockquote>
 <h2 id="常用插件模块"><a class="markdownIt-Anchor" href="#常用插件模块"></a> 常用插件模块</h2>
 <table>
 <thead>
@@ -428,8 +428,12 @@
 <td>创建html入口文件，引入相关外部资源</td>
 </tr>
 <tr>
-<td>extract-text-webpack-plugin</td>
-<td>提取css样式</td>
+<td>extract-text-webpack-plugin@next</td>
+<td>提取css样式,webpack4不再支持extract-text-webpack-plugin</td>
+</tr>
+<tr>
+<td>mini-css-extract-plugin</td>
+<td>[webpack4]将CSS提取到单独的文件中</td>
 </tr>
 <tr>
 <td>copy-webpack-plugin</td>
@@ -468,6 +472,10 @@
 <td>给不同浏览器的样式加上前缀</td>
 </tr>
 <tr>
+<td>autoprefixer</td>
+<td>自动补充前缀配合postcss-loader使用</td>
+</tr>
+<tr>
 <td>postcss-url</td>
 <td>转换url，复制资产的PostCSS插件</td>
 </tr>
@@ -481,11 +489,11 @@
 </tr>
 <tr>
 <td>@babel/core</td>
-<td>用来处理ES6语法，将其编译为浏览器可以执行的js语法</td>
+<td>babel核心包</td>
 </tr>
 <tr>
 <td>@babel/preset-env</td>
-<td>用来处理ES6语法，将其编译为浏览器可以执行的js语法</td>
+<td>ES语法分析包</td>
 </tr>
 </tbody>
 </table>
@@ -508,9 +516,9 @@
 <p>2、创建文件</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模板文件</span></span><br><span class="line">touch index.html</span><br><span class="line"><span class="comment"># 存放需要渲染的内容</span></span><br><span class="line">touch App.vue</span><br><span class="line"><span class="comment"># 入口文件</span></span><br><span class="line">touch app.js</span><br><span class="line"><span class="comment"># webpack配置</span></span><br><span class="line">touch webpack.config.js</span><br><span class="line"><span class="comment"># .gitignore</span></span><br><span class="line">touch .gitignore</span><br></pre></td></tr></table></figure>
 <p>3、引入依赖</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install  vue vue-loader webpack webpack-cli css-loader vue-template-compiler html-webpack-plugin webpack-dev-server -D</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install  vue vue-loader webpack webpack-cli vue-template-compiler html-webpack-plugin webpack-dev-server -D</span><br></pre></td></tr></table></figure>
 <p>4、文件目录结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-xxx</span><br><span class="line"> |--.gitignore</span><br><span class="line"> |--app.js</span><br><span class="line"> |--App.vue</span><br><span class="line"> |--index.html</span><br><span class="line"> |--pageage-lock.json</span><br><span class="line"> |--pageage.json</span><br><span class="line"> |--webpack.config.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-xxx</span><br><span class="line"> |--.gitignore  <span class="comment"># git忽略提交</span></span><br><span class="line"> |--app.js      <span class="comment"># 入口文件</span></span><br><span class="line"> |--App.vue     <span class="comment"># 需要渲染展示的内容</span></span><br><span class="line"> |--index.html  <span class="comment"># 模板插槽</span></span><br><span class="line"> |--pageage-lock.json <span class="comment"># 锁定所有模块的版本号</span></span><br><span class="line"> |--pageage.json <span class="comment"># 记录你项目中所需要的所有模块</span></span><br><span class="line"> |--webpack.config.js <span class="comment"># webpack配置文件</span></span><br></pre></td></tr></table></figure>
 <p>5、文件内容<br />
 <strong>index.html</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -519,13 +527,13 @@
 <p><strong>app.js</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    render: <span class="function">(<span class="params">h</span>) =&gt;</span> h(App)</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
 <p><strong>webpack.config.js</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> VueLoaderPlugin = <span class="built_in">require</span>(<span class="string">'vue-loader/lib/plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: path.join(__dirname, <span class="string">'./app.js'</span>),</span><br><span class="line">  mode: <span class="string">'development'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'index.js'</span>,</span><br><span class="line">    path: path.join(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/.vue$/</span>,</span><br><span class="line">        loader: <span class="string">'vue-loader'</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="string">'.js'</span>, <span class="string">'.json'</span>, <span class="string">'.css'</span>, <span class="string">'.vue'</span>],</span><br><span class="line">    modules: [<span class="string">"node_modules"</span>, path.resolve(__dirname, <span class="string">'app'</span>)]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(</span><br><span class="line">      &#123;</span><br><span class="line">        template: <span class="string">'index.html'</span>, <span class="comment">// 模版路径</span></span><br><span class="line">        filename: <span class="string">'index.html'</span>, <span class="comment">// 生成的文件名称</span></span><br><span class="line">        inject: <span class="string">'body'</span> <span class="comment">// 指定插入的&lt;script&gt;标签在body底部</span></span><br><span class="line">      &#125;</span><br><span class="line">    ),</span><br><span class="line">    <span class="keyword">new</span> VueLoaderPlugin()</span><br><span class="line">  ],</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    port: <span class="string">'80'</span>,</span><br><span class="line">    compress: <span class="literal">true</span>, <span class="comment">// enable gzip compression</span></span><br><span class="line">    hot: <span class="literal">true</span>, <span class="comment">// hot module replacement</span></span><br><span class="line">    disableHostCheck: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> VueLoaderPlugin = <span class="built_in">require</span>(<span class="string">'vue-loader/lib/plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: path.join(__dirname, <span class="string">'./app.js'</span>),</span><br><span class="line">  mode: <span class="string">'development'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'index.js'</span>,</span><br><span class="line">    path: path.join(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/.vue$/</span>,</span><br><span class="line">        loader: <span class="string">'vue-loader'</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="string">'.js'</span>, <span class="string">'.json'</span>, <span class="string">'.css'</span>, <span class="string">'.vue'</span>],</span><br><span class="line">    modules: [<span class="string">"node_modules"</span>, path.resolve(__dirname, <span class="string">'app'</span>)]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(</span><br><span class="line">      &#123;</span><br><span class="line">        template: <span class="string">'index.html'</span>, <span class="comment">// 模版路径</span></span><br><span class="line">        filename: <span class="string">'index.html'</span>, <span class="comment">// 生成的文件名称</span></span><br><span class="line">        inject: <span class="string">'body'</span> <span class="comment">// 指定插入的&lt;script&gt;标签在body底部</span></span><br><span class="line">      &#125;</span><br><span class="line">    ),</span><br><span class="line">    <span class="keyword">new</span> VueLoaderPlugin()</span><br><span class="line">  ],</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    disableHostCheck: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>.gitignore</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules/</span><br></pre></td></tr></table></figure>
 <p><strong>package.json</strong></p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"xxx"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"dev"</span>: <span class="string">"webpack-dev-server --inline --hot --mode=development"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"keywords"</span>: [],</span><br><span class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"css-loader"</span>: <span class="string">"^3.5.3"</span>,</span><br><span class="line">    <span class="attr">"html-webpack-plugin"</span>: <span class="string">"^4.2.1"</span>,</span><br><span class="line">    <span class="attr">"vue"</span>: <span class="string">"^2.6.11"</span>,</span><br><span class="line">    <span class="attr">"vue-loader"</span>: <span class="string">"^15.9.1"</span>,</span><br><span class="line">    <span class="attr">"vue-template-compiler"</span>: <span class="string">"^2.6.11"</span>,</span><br><span class="line">    <span class="attr">"webpack"</span>: <span class="string">"^4.43.0"</span>,</span><br><span class="line">    <span class="attr">"webpack-cli"</span>: <span class="string">"^3.3.11"</span>,</span><br><span class="line">    <span class="attr">"webpack-dev-server"</span>: <span class="string">"^3.10.3"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>6、执行命令会自动打开浏览器，查看是否显示App.vue里面的内容</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开发环境</span></span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"xxx"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"dev"</span>: <span class="string">"webpack-dev-server --open --port 3000 --hot --inline --mode=development"</span>,</span><br><span class="line">    <span class="attr">"build"</span>: <span class="string">"webpack --progress --colors --mode=production"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"keywords"</span>: [],</span><br><span class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"css-loader"</span>: <span class="string">"^3.5.3"</span>,</span><br><span class="line">    <span class="attr">"html-webpack-plugin"</span>: <span class="string">"^4.2.1"</span>,</span><br><span class="line">    <span class="attr">"vue"</span>: <span class="string">"^2.6.11"</span>,</span><br><span class="line">    <span class="attr">"vue-loader"</span>: <span class="string">"^15.9.1"</span>,</span><br><span class="line">    <span class="attr">"vue-template-compiler"</span>: <span class="string">"^2.6.11"</span>,</span><br><span class="line">    <span class="attr">"webpack"</span>: <span class="string">"^4.43.0"</span>,</span><br><span class="line">    <span class="attr">"webpack-cli"</span>: <span class="string">"^3.3.11"</span>,</span><br><span class="line">    <span class="attr">"webpack-dev-server"</span>: <span class="string">"^3.10.3"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、执行命令会自动打开浏览器，查看是否正常显示出App.vue里面的内容</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开发环境</span></span><br><span class="line">npm run dev</span><br><span class="line"><span class="comment"># 生产环境</span></span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2>
 <ul>
 <li><a href="https://www.webpackjs.com/concepts/" target="_blank" rel="noopener">webapck</a></li>
