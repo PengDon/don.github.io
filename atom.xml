@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pengdon.github.io/"/>
-  <updated>2020-05-09T07:42:00.294Z</updated>
+  <updated>2020-05-09T08:46:36.945Z</updated>
   <id>https://pengdon.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vueTypescript 简单实现2</title>
+    <link href="https://pengdon.github.io/2020/05/09/vueTypescript2/"/>
+    <id>https://pengdon.github.io/2020/05/09/vueTypescript2/</id>
+    <published>2020-05-09T08:43:39.000Z</published>
+    <updated>2020-05-09T08:46:36.945Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><strong>注意</strong><br />接着“vue typescript 简单实现”的基础上添加 typescript 支持</p></blockquote><hr /><h2 id="新增说明"><a class="markdownIt-Anchor" href="#新增说明"></a> 新增说明</h2><p>1、添加 eslint 支持</p><blockquote><p>eslint@6.5.1、@typescript-eslint/parser、@typescript-eslint/eslint-plugin</p></blockquote><p>2、用来检测和规范 Vue 代码的风格</p><blockquote><p>eslint-plugin-vue</p></blockquote><p>3、用来做格式化工具配合我们的 ESLint 可以更大的发挥作用</p><blockquote><p>prettier、eslint-config-prettier、eslint-plugin-prettier</p></blockquote><h2 id="依赖插件安装"><a class="markdownIt-Anchor" href="#依赖插件安装"></a> 依赖插件安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install eslint@6.5.1 @typescript-eslint/parser @typescript-eslint/eslint-plugin -D</span><br><span class="line">npm install eslint-plugin-vue -D</span><br><span class="line">npm install prettier eslint-config-prettier eslint-plugin-prettier -D</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;&lt;br /&gt;
+接着“vue typescript 简单实现”的基础上添加 typescript 支持&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;新增说明&quot;&gt;&lt;a class=&quot;markd
+      
+    
+    </summary>
+    
+    
+      <category term="Vue-Typescript" scheme="https://pengdon.github.io/categories/Vue-Typescript/"/>
+    
+    
+      <category term="vue" scheme="https://pengdon.github.io/tags/vue/"/>
+    
+      <category term="typescript" scheme="https://pengdon.github.io/tags/typescript/"/>
+    
+  </entry>
   
   <entry>
     <title>vue typescript 简单实现</title>
