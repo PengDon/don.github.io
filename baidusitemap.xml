@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://pengdon.github.io/2020/05/09/vueTypescript/</loc>
+    <lastmod>2020-05-09</lastmod>
+  </url>  <url>
     <loc>https://pengdon.github.io/2020/05/07/vueWebpack3/</loc>
-    <lastmod>2020-05-07</lastmod>
+    <lastmod>2020-05-08</lastmod>
   </url>  <url>
     <loc>https://pengdon.github.io/2020/04/30/vueWebapck2/</loc>
-    <lastmod>2020-04-30</lastmod>
+    <lastmod>2020-05-08</lastmod>
   </url>  <url>
     <loc>https://pengdon.github.io/2020/04/29/vueWebapck/</loc>
     <lastmod>2020-04-30</lastmod>

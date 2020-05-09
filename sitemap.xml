@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pengdon.github.io/2020/05/09/vueTypescript/</loc>
+    
+    <lastmod>2020-05-09T07:42:00.294Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://pengdon.github.io/2020/05/07/vueWebpack3/</loc>
     
-    <lastmod>2020-05-07T10:42:18.207Z</lastmod>
+    <lastmod>2020-05-08T03:06:21.615Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://pengdon.github.io/2020/04/30/vueWebapck2/</loc>
     
-    <lastmod>2020-04-30T08:54:22.402Z</lastmod>
+    <lastmod>2020-05-08T03:04:48.490Z</lastmod>
     
   </url>
   
