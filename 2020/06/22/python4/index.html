@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>python处理excel文件 | don</title>
+  <meta name="description" content="前提 python3.8 win10 64 vscode  操作excel  说明：整个excel文件称为工作簿，工作簿中的每个页称为工作表，工作表又由单元格组成   xlrd模块读取excel文件(xlrd模块既可读取xls文件也可读取xlsx文件) xlwt模块写入excel文件(xlwt模块只能写xls文件，不能写xlsx文件)  1234567# 检查模块是否安装pip show xlr">
+<meta name="keywords" content="python excel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python处理excel文件">
+<meta property="og:url" content="https:&#x2F;&#x2F;pengdon.github.io&#x2F;2020&#x2F;06&#x2F;22&#x2F;python4&#x2F;index.html">
+<meta property="og:site_name" content="pengdon">
+<meta property="og:description" content="前提 python3.8 win10 64 vscode  操作excel  说明：整个excel文件称为工作簿，工作簿中的每个页称为工作表，工作表又由单元格组成   xlrd模块读取excel文件(xlrd模块既可读取xls文件也可读取xlsx文件) xlwt模块写入excel文件(xlwt模块只能写xls文件，不能写xlsx文件)  1234567# 检查模块是否安装pip show xlr">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-23T02:40:04.514Z">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://pengdon.github.io/2020/06/22/python4/index.html">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<link rel="alternate" href="/atom.xml" title="pengdon" type="application/atom+xml">
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/PengDon" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">don</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">software engineer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/PengDon" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Arithmetic/">Arithmetic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Axios/">Axios</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React-SSR/">React-SSR</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-SSR/">Vue-SSR</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-Typescript/">Vue-Typescript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-Webpack/">Vue-Webpack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/" rel="tag">Express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Koa/" rel="tag">Koa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Npm/" rel="tag">Npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/axios/" rel="tag">axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prerender-spa-plugin/" rel="tag">prerender-spa-plugin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-excel/" rel="tag">python excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-io/" rel="tag">python io</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-mysql/" rel="tag">python mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seo/" rel="tag">seo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Express/" style="font-size: 13px;">Express</a> <a href="/tags/Koa/" style="font-size: 13px;">Koa</a> <a href="/tags/Node/" style="font-size: 13px;">Node</a> <a href="/tags/Npm/" style="font-size: 13px;">Npm</a> <a href="/tags/axios/" style="font-size: 13px;">axios</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/nextjs/" style="font-size: 13px;">nextjs</a> <a href="/tags/prerender-spa-plugin/" style="font-size: 13.33px;">prerender-spa-plugin</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/python-excel/" style="font-size: 13px;">python excel</a> <a href="/tags/python-io/" style="font-size: 13px;">python io</a> <a href="/tags/python-mysql/" style="font-size: 13px;">python mysql</a> <a href="/tags/seo/" style="font-size: 13.33px;">seo</a> <a href="/tags/typescript/" style="font-size: 13.33px;">typescript</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/webpack/" style="font-size: 13.67px;">webpack</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/python/">python</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/22/python5/" class="title">python常用命令</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-22T06:36:50.000Z" itemprop="datePublished">2020-06-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/python/">python</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/22/python4/" class="title">python处理excel文件</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-22T06:29:36.000Z" itemprop="datePublished">2020-06-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/python/">python</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/19/python3/" class="title">python 日志工具类</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-19T07:51:49.000Z" itemprop="datePublished">2020-06-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/python/">python</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/18/python2/" class="title">python mysql数据库操作封装</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-18T03:13:36.000Z" itemprop="datePublished">2020-06-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/python/">python</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/18/python/" class="title">python记录1</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-18T02:35:45.000Z" itemprop="datePublished">2020-06-18</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-python4" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python处理excel文件
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/06/22/python4/" class="article-date">
+	  <time datetime="2020-06-22T06:29:36.000Z" itemprop="datePublished">2020-06-22</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/python-excel/" rel="tag">python excel</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/22/python4/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.8k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="前提"><a class="markdownIt-Anchor" href="#前提"></a> 前提</h2>
+<p>python3.8<br />
+win10 64<br />
+vscode</p>
+<h2 id="操作excel"><a class="markdownIt-Anchor" href="#操作excel"></a> 操作excel</h2>
+<blockquote>
+<p>说明：整个excel文件称为工作簿，工作簿中的每个页称为工作表，工作表又由单元格组成</p>
+</blockquote>
+<ol>
+<li>xlrd模块读取excel文件(xlrd模块既可读取xls文件也可读取xlsx文件)</li>
+<li>xlwt模块写入excel文件(xlwt模块只能写xls文件，不能写xlsx文件)</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查模块是否安装</span></span><br><span class="line">pip show xlrd</span><br><span class="line">pip show xlwt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装模块</span></span><br><span class="line">pip install xlrd</span><br><span class="line">pip install xlwt</span><br></pre></td></tr></table></figure>
+<h3 id="xlrd模块读取excel文件"><a class="markdownIt-Anchor" href="#xlrd模块读取excel文件"></a> xlrd模块读取excel文件</h3>
+<p>年报excel（annals.xls）内容如下：</p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>季度</th>
+<th>营销额</th>
+<th>增长</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2016</td>
+<td>一季度</td>
+<td>2000</td>
+<td>10.20%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>二季度</td>
+<td>3000</td>
+<td>34.00%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>三季度</td>
+<td>2877</td>
+<td>28.30%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>四季度</td>
+<td>3882</td>
+<td>42.00%</td>
+</tr>
+</tbody>
+</table>
+<h4 id="xlrd怎么用"><a class="markdownIt-Anchor" href="#xlrd怎么用"></a> <strong>xlrd怎么用</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入模块 </span></span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="comment"># 获取工作簿 </span></span><br><span class="line">annals = xlrd.open_workbook(<span class="string">'excel文件名.xls'</span>)</span><br><span class="line"><span class="comment"># 获取所有工作表名称,结果为列表 </span></span><br><span class="line">names = annals.sheet_names()</span><br><span class="line"><span class="comment"># 根据索引或者名称获取工作表对象</span></span><br><span class="line"><span class="comment"># 索引</span></span><br><span class="line">sheet = annals.sheet_by_index(i)</span><br><span class="line"><span class="comment"># 名称</span></span><br><span class="line">sheet = annals.sheet_by_name(<span class="string">'工作表名称'</span>)</span><br><span class="line"><span class="comment"># 获取工作表行数、列数</span></span><br><span class="line"><span class="comment"># 行数</span></span><br><span class="line">rows = sheet.nrows</span><br><span class="line"><span class="comment"># 列数</span></span><br><span class="line">cols = sheet.ncols</span><br><span class="line"><span class="comment"># 获取工作表某一行的内容,结果为列表</span></span><br><span class="line">row = sheet.row_values(i)</span><br><span class="line"><span class="comment"># 获取工作表某一列的内容,结果为列表</span></span><br><span class="line">col = sheet.col_values(i)</span><br><span class="line"><span class="comment"># 获取工作表某一单元格的的内容,结果为字符串或数值</span></span><br><span class="line">cell = sheet.cell_value(m,n).value</span><br></pre></td></tr></table></figure>
+<h4 id="读取年报annalsxls"><a class="markdownIt-Anchor" href="#读取年报annalsxls"></a> <strong>读取年报（annals.xls）</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">from</span> logger <span class="keyword">import</span> Loggings</span><br><span class="line">loggings = Loggings()</span><br><span class="line">annals = xlrd.open_workbook(<span class="string">'annals.xls'</span>)</span><br><span class="line">loggings.info(<span class="string">f'所有工作表名称：<span class="subst">&#123;annals.sheet_names()&#125;</span>'</span>)</span><br><span class="line">sheet = annals.sheet_by_name(<span class="string">'Sheel'</span>)</span><br><span class="line">rows = sheet.nrows</span><br><span class="line">cols = sheet.ncols</span><br><span class="line">loggings.info(<span class="string">f'行：<span class="subst">&#123;rows&#125;</span>'</span>)</span><br><span class="line">loggings.info(<span class="string">f'列：<span class="subst">&#123;cols&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="xlwt怎么用"><a class="markdownIt-Anchor" href="#xlwt怎么用"></a> <strong>xlwt怎么用</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入模块</span></span><br><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line"><span class="comment"># 创建工作簿,如果写入中文为乱码，可添加参数encoding = 'utf-8'</span></span><br><span class="line">book = wlwt.Wortbook()</span><br><span class="line"><span class="comment"># 创建工作表</span></span><br><span class="line">sheet = book.add_sheet(<span class="string">'工作表名称'</span>)</span><br><span class="line"><span class="comment"># 向单元格写入内容</span></span><br><span class="line">sheet.write(行下标,列下标,值)</span><br><span class="line"><span class="comment"># 保存工作簿，默认保存在py文件相同路径下，如果该路径下有相同文件，会被新创建的文件覆盖</span></span><br><span class="line">book.save(<span class="string">'excel文件名称'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="写入数据"><a class="markdownIt-Anchor" href="#写入数据"></a> <strong>写入数据</strong></h4>
+<ol>
+<li>逐步插入数据</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line">book = xlwt.Workbook()</span><br><span class="line">sheet = book.add_sheet(<span class="string">'Sheel'</span>)</span><br><span class="line">sheet.write(<span class="number">0</span>,<span class="number">0</span>,<span class="string">'类型'</span>)</span><br><span class="line">sheet.write(<span class="number">0</span>,<span class="number">1</span>,<span class="string">'书名'</span>)</span><br><span class="line">book.save(<span class="string">'book.xls'</span>)</span><br></pre></td></tr></table></figure>
+<p>book.xls内容如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ol>
+<li>按行插入</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line">book = xlwt.Workbook()</span><br><span class="line">sheet = book.add_sheet(<span class="string">'Sheel'</span>)</span><br><span class="line"></span><br><span class="line">titles = [<span class="string">'类型'</span>,<span class="string">'书名'</span>]</span><br><span class="line">types = [<span class="string">'java'</span>,<span class="string">'算法'</span>]</span><br><span class="line">booknames = [<span class="string">'think in java'</span>,<span class="string">'计算机算法3'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(titles)):</span><br><span class="line">  sheet.write(<span class="number">0</span>,i,titles[i])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(types)):</span><br><span class="line">  sheet.write(i+<span class="number">1</span>,<span class="number">0</span>,types[i])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(booknames)):</span><br><span class="line">  sheet.write(i+<span class="number">1</span>,<span class="number">1</span>,booknames[i])</span><br><span class="line">book.save(<span class="string">'book.xls'</span>)</span><br></pre></td></tr></table></figure>
+<p>book.xls内容如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>java</td>
+<td>think in java</td>
+</tr>
+<tr>
+<td>算法</td>
+<td>计算机算法3</td>
+</tr>
+</tbody>
+</table>
+<h4 id="自定义字体样式的excel表"><a class="markdownIt-Anchor" href="#自定义字体样式的excel表"></a> <strong>自定义字体样式的excel表</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line">book = xlwt.Workbook(encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">sheet = book.add_sheet(<span class="string">'shee1'</span>)</span><br><span class="line">style = xlwt.XFStyle()  <span class="comment"># 初始化样式</span></span><br><span class="line">font = xlwt.Font()  <span class="comment"># 初始化字体</span></span><br><span class="line">font.name = <span class="string">'Times New Roman'</span>  <span class="comment"># 使用字体的名称</span></span><br><span class="line">font.bold = <span class="literal">True</span>  <span class="comment"># 字体加粗</span></span><br><span class="line">font.underline = <span class="literal">True</span>  <span class="comment"># 字体加下划线</span></span><br><span class="line">font.italic = <span class="literal">True</span>  <span class="comment"># 斜体字</span></span><br><span class="line">style.font = font  <span class="comment"># 设定样式使用的字体</span></span><br><span class="line">sheet.write(<span class="number">0</span>,<span class="number">0</span>, <span class="string">'unformated'</span>)  <span class="comment"># 不带样式的表单内容</span></span><br><span class="line">sheet.write(<span class="number">0</span>,<span class="number">1</span>, <span class="string">'formated'</span>, style)  <span class="comment"># 带样式的表单内容</span></span><br><span class="line">book.save(<span class="string">'book.xls'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="设置单元格的宽度"><a class="markdownIt-Anchor" href="#设置单元格的宽度"></a> <strong>设置单元格的宽度</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">book = xlwt.Workbook(encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">sheet = book.add_sheet(<span class="string">'shee1'</span>)</span><br><span class="line">sheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="string">'测试用例'</span>)</span><br><span class="line">sheet.col(<span class="number">0</span>).width = <span class="number">3333</span>  <span class="comment"># 设置表单：sheet1 的第一列所有单元格的宽度</span></span><br><span class="line">book.save(<span class="string">'book.xls'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="输入一个日期到单元格"><a class="markdownIt-Anchor" href="#输入一个日期到单元格"></a> <strong>输入一个日期到单元格</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">book = xlwt.Workbook()</span><br><span class="line">sheet = book.add_sheet(<span class="string">'sheet1'</span>)</span><br><span class="line">style = xlwt.XFStyle()  <span class="comment"># 凡是设置表格属性，都需要初始化一个样式</span></span><br><span class="line">style.num_format_str = <span class="string">'M/D/YY'</span>  <span class="comment"># 设置当前表格的日期格式，以下为其他可选的格式</span></span><br><span class="line"><span class="comment"># D: 表示日期， M：表示月份，Y：表示年，h：表示小时，m：表示分钟，s：表示秒</span></span><br><span class="line"><span class="comment"># Other options: D-MMM-YY, D-MMM, MMM-YY, h:mm, h:mm:ss, h:mm, h:mm:ss, M/D/YY h:mm, mm:ss, [h]:mm:ss, mm:ss.0</span></span><br><span class="line">sheet.col(<span class="number">1</span>).width = <span class="number">3333</span>  <span class="comment"># 设定日期表格宽度</span></span><br><span class="line">sheet.write(<span class="number">0</span>,<span class="number">1</span>, datetime.datetime.today(), style)  <span class="comment"># 设定当前表格日期采用style样式显示</span></span><br><span class="line">book.save(<span class="string">'book.xls'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="向表格添加一个公式"><a class="markdownIt-Anchor" href="#向表格添加一个公式"></a> <strong>向表格添加一个公式</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">book = xlwt.Workbook()</span><br><span class="line">sheet = book.add_sheet(<span class="string">'sheet'</span>)</span><br><span class="line">sheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="number">5</span>)</span><br><span class="line">sheet.write(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">sheet.write(<span class="number">1</span>, <span class="number">0</span>, xlwt.Formula((<span class="string">'A1*B1'</span>)))  <span class="comment"># 实现第一行第一个字段和第二个字段值相乘，写入到第二行第一个表格内</span></span><br><span class="line">sheet.write(<span class="number">1</span>, <span class="number">1</span>, xlwt.Formula(<span class="string">'SUM(A1,B1)'</span>))  <span class="comment"># 实现第一行第一个字段和第二个字段值相加，写入到第二行第二个表格内</span></span><br><span class="line">book.save(<span class="string">'book.xls'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="向一个表格添加一个超链接"><a class="markdownIt-Anchor" href="#向一个表格添加一个超链接"></a> <strong>向一个表格添加一个超链接</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">book = xlwt.Workbook()</span><br><span class="line">sheet = book.add_sheet(<span class="string">'sheet_link'</span>)</span><br><span class="line">sheet.write(<span class="number">0</span>, <span class="number">1</span>, xlwt.Formula(<span class="string">'HYPERLINK("http://www.baidu.com";"baidu")'</span>))  <span class="comment"># 在表格里创建一个超链接，名称为：baidu</span></span><br><span class="line">book.save(<span class="string">'book.xls'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="合并列和行"><a class="markdownIt-Anchor" href="#合并列和行"></a> <strong>合并列和行</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关于write_merge(x,m,y,n)参数说明：x 表示行数，m表示跨行个数， y表示列， n表示跨列个数，行和列的开始计数都为0</span></span><br><span class="line">book = xlwt.Workbook()</span><br><span class="line">sheet = book.add_sheet(<span class="string">'sheet'</span>)</span><br><span class="line">sheet.write_merge(<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="string">'First merge'</span>)  </span><br><span class="line">font = xlwt.Font()</span><br><span class="line">font.bold = <span class="literal">True</span></span><br><span class="line">style = xlwt.XFStyle()</span><br><span class="line">style.font = font</span><br><span class="line">sheet.write_merge(<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="string">'second merge'</span>, style)</span><br><span class="line">book.save(<span class="string">'book.xls'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="设置单元格内容的对其方式"><a class="markdownIt-Anchor" href="#设置单元格内容的对其方式"></a> <strong>设置单元格内容的对其方式</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">workbook = xlwt.Workbook()</span><br><span class="line">worksheet = workbook.add_sheet(<span class="string">'My Sheet'</span>)</span><br><span class="line">alignment = xlwt.Alignment() <span class="comment"># Create Alignment</span></span><br><span class="line">alignment.horz = xlwt.Alignment.HORZ_CENTER <span class="comment"># May be: HORZ_GENERAL, HORZ_LEFT, HORZ_CENTER, HORZ_RIGHT, HORZ_FILLED, HORZ_JUSTIFIED, HORZ_CENTER_ACROSS_SEL, HORZ_DISTRIBUTED</span></span><br><span class="line">alignment.vert = xlwt.Alignment.VERT_CENTER <span class="comment"># May be: VERT_TOP, VERT_CENTER, VERT_BOTTOM, VERT_JUSTIFIED, VERT_DISTRIBUTED</span></span><br><span class="line">style = xlwt.XFStyle() <span class="comment"># Create Style</span></span><br><span class="line">style.alignment = alignment <span class="comment"># Add Alignment to Style</span></span><br><span class="line">worksheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="string">'Cell Contents'</span>, style)</span><br><span class="line">workbook.save(<span class="string">'book.xls'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="为单元格设置背景色"><a class="markdownIt-Anchor" href="#为单元格设置背景色"></a> <strong>为单元格设置背景色</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">book = xlwt.Workbook()</span><br><span class="line">sheet = book.add_sheet(<span class="string">'sheet'</span>)</span><br><span class="line">pattern = xlwt.Pattern()  <span class="comment"># 初始化一个图案</span></span><br><span class="line">pattern.pattern = xlwt.Pattern.SOLID_PATTERN  <span class="comment"># 可选：NO_PATTERN, SOLID_PATTERN, or 0x00 through 0x12</span></span><br><span class="line">pattern.pattern_fore_colour = <span class="number">5</span>  <span class="comment"># 背景颜色为黄色 </span></span><br><span class="line"><span class="comment"># 可选： 0 = Black, 1 = White, 2 = Red, 3 = Green, 4 = Blue, 5 = Yellow, 6 = Magenta, 7 = Cyan, 16 = Maroon, 17 = Dark Green, 18 = Dark Blue, 19 = Dark Yellow , almost brown), 20 = Dark Magenta, 21 = Teal, 22 = Light Gray, 23 = Dark Gray, the list goes on...</span></span><br><span class="line">style = xlwt.XFStyle()</span><br><span class="line">style.pattern = pattern  <span class="comment"># 添加样式</span></span><br><span class="line">sheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="string">'Cell content'</span>, style)</span><br><span class="line">book.save(<span class="string">'book.xls'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="处理xlsx文件"><a class="markdownIt-Anchor" href="#处理xlsx文件"></a> <strong>处理xlsx文件</strong></h4>
+<p>openpyxl模块可实现对excel文件的读、写和修改，只能处理xlsx文件，不能处理xls文件</p>
+<ol>
+<li>openpyxl读取excel文件</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入模块</span></span><br><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"><span class="comment"># 获取工作簿对象</span></span><br><span class="line">book = openpyxl.load_workbook(<span class="string">'excel文件名称'</span>)</span><br><span class="line"><span class="comment"># 获取所有工作表名称</span></span><br><span class="line">names = book.sheetnames</span><br><span class="line"><span class="comment"># 获取工作表对象</span></span><br><span class="line">sheet = book.worksheets[i]</span><br><span class="line">sheet2 = book[<span class="string">'工作表名称'</span>]</span><br><span class="line">sheet3 = book[book.sheetnames[i]]</span><br><span class="line"><span class="comment"># 获取工作表名称</span></span><br><span class="line">title = sheet1.title</span><br><span class="line"><span class="comment"># 获取工作表行数</span></span><br><span class="line">rows = sheet1.max_row</span><br><span class="line"><span class="comment"># 获取工作表列数</span></span><br><span class="line">cols = sheet1.max_column</span><br><span class="line"><span class="comment"># 获取某一单元格内容，x/y 例如： 0,0  1,2 ，单元格 A1 B1</span></span><br><span class="line">cell = sheet.cell(x,y).value</span><br><span class="line">cell = sheet[<span class="string">'单元格'</span>].value</span><br></pre></td></tr></table></figure>
+<ol>
+<li>openpyxl写excel文件</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入模块</span></span><br><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"><span class="comment"># 创建工作簿</span></span><br><span class="line">book = openpyxl.Workbook()</span><br><span class="line"><span class="comment"># 创建工作表，0表示创建的工作表在工作薄最前面</span></span><br><span class="line">sheet = book.create_sheet(<span class="string">'工作表名称'</span>,<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 向单元格写入内容 </span></span><br><span class="line">sheet.cell(x,y,<span class="string">'内容1'</span>)</span><br><span class="line"><span class="comment"># 保存工作簿</span></span><br><span class="line">book.save(<span class="string">'excel文件名称'</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>openpyxl修改excel文件</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入模块</span></span><br><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"><span class="comment"># 获取工作簿对象</span></span><br><span class="line">book = openpyxl.load_workbook(<span class="string">'excel文件名称'</span>)</span><br><span class="line"><span class="comment"># 获取所有工作表名称</span></span><br><span class="line">names = book.sheetnames</span><br><span class="line"><span class="comment"># 获取工作表对象</span></span><br><span class="line">sheet = book.worksheets[i]</span><br><span class="line"><span class="comment"># 在某行前插入</span></span><br><span class="line">sheet.insert_rows(x)</span><br><span class="line"><span class="comment"># 在某列前插入</span></span><br><span class="line">sheet.insert_cols(y)</span><br><span class="line"><span class="comment"># 删除指定行</span></span><br><span class="line">sheet.delete_rows(x)</span><br><span class="line"><span class="comment"># 删除指定列</span></span><br><span class="line">sheet.delete_cols(y)</span><br><span class="line"><span class="comment"># 修改单元格内容</span></span><br><span class="line">sheet.cell(x,y) = <span class="string">'内容'</span></span><br><span class="line">sheet[<span class="string">'单元格'</span>] = <span class="string">'内容'</span></span><br><span class="line"><span class="comment"># 在最后追加行</span></span><br><span class="line">sheet.append([x,y,<span class="string">'内容'</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2>
+<ul>
+<li><a href="http://www.python-excel.org/" target="_blank" rel="noopener">python操作excel</a></li>
+<li><a href="https://github.com/python-excel/xlrd" target="_blank" rel="noopener">xlrd</a></li>
+<li><a href="https://xlrd.readthedocs.io/en/latest/api.html" target="_blank" rel="noopener">xlrd api</a></li>
+<li><a href="https://openpyxl.readthedocs.io/en/stable/" target="_blank" rel="noopener">openpyxl api</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://pengdon.github.io/2020/06/22/python4/" title="python处理excel文件" target="_blank" rel="external">https://pengdon.github.io/2020/06/22/python4/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/PengDon" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/PengDon" target="_blank"><span class="text-dark">don</span><small class="ml-1x">software engineer</small></a></h3>
+        <div>拥抱未来，用技术改善生活。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+    
+      <div id="gitalkComments"></div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/06/22/python5/" title="python常用命令"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/06/19/python3/" title="python 日志工具类"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/PengDon" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '58b814b7330e819231fe',
+    clientSecret: 'fc0bfe0d2bab1f8f76f75d32aef724404ceb1413',
+    repo: 'pengdon.github.io',
+    owner: 'PengDon',
+    admin: ['PengDon'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('gitalkComments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
